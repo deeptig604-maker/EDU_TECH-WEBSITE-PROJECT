@@ -1,1075 +1,1422 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Learnify — Learn Without Limits</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js" defer></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        body: ['DM Sans', 'sans-serif'],
-      },
-      colors: {
-        ink: '#0B0F1A',
-        'ink-light': '#1A2035',
-        azure: {
-          50: '#eef5ff',
-          100: '#d9e9ff',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-        },
-        violet: {
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-        },
-      },
-      backgroundImage: {
-        'grad-hero': 'radial-gradient(ellipse 120% 80% at 60% -10%, #1e1b4b 0%, #0B0F1A 55%)',
-        'grad-cta': 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
-        'grad-card': 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)',
-      },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'float-slow': 'float 9s ease-in-out infinite',
-        'glow-pulse': 'glowPulse 4s ease-in-out infinite',
-        'slide-up': 'slideUp 0.7s cubic-bezier(.22,1,.36,1) forwards',
-      },
-      keyframes: {
-        float: { '0%,100%': {transform:'translateY(0px)'}, '50%': {transform:'translateY(-18px)'} },
-        glowPulse: { '0%,100%': {opacity:'0.5', transform:'scale(1)'}, '50%': {opacity:'0.8', transform:'scale(1.05)'} },
-        slideUp: { from:{opacity:'0',transform:'translateY(40px)'}, to:{opacity:'1',transform:'translateY(0)'} },
-      },
-    }
-  }
-}
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baoiams Learn. Build. Innovate.</title>
+<meta name="description" content="Master in-demand technologies through expert-led courses, real-world projects, internships, and certifications at Baoiams.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; }
-  h1, h2, h3, h4, h5, h6, .font-display { font-family: 'Syne', sans-serif; }
+:root {
+  --orange: #FF6B00;
+  --orange-light: #FFA64D;
+  --orange-glow: rgba(255,107,0,0.18);
+  --orange-glow2: rgba(255,107,0,0.08);
+  --white: #FFFFFF;
+  --bg: #F8F9FA;
+  --bg2: #FFFFFF;
+  --bg3: #F0F2F5;
+  --card: #FFFFFF;
+  --card2: #F5F6FA;
+  --text: #111827;
+  --text2: #374151;
+  --text3: #6B7280;
+  --border: rgba(0,0,0,0.08);
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow2: 0 12px 40px rgba(255,107,0,0.15);
+  --nav-bg: rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.7);
+  --glass-border: rgba(255,255,255,0.5);
+  --transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"] {
+  --bg: #0D0D0D;
+  --bg2: #111111;
+  --bg3: #1A1A1A;
+  --card: #1C1C1E;
+  --card2: #242424;
+  --text: #F5F5F5;
+  --text2: #D1D5DB;
+  --text3: #9CA3AF;
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --nav-bg: rgba(13,13,13,0.9);
+  --glass: rgba(28,28,30,0.7);
+  --glass-border: rgba(255,255,255,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);transition:var(--transition);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none;font-family:inherit}
+ul{list-style:none}
 
-  :root {
-    --bg: #0B0F1A;
-    --surface: #111827;
-    --surface2: #1f2937;
-    --border: rgba(255,255,255,0.07);
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-  }
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
 
-  .light {
-    --bg: #f8faff;
-    --surface: #ffffff;
-    --surface2: #eef2ff;
-    --border: rgba(0,0,0,0.08);
-    --text: #0f172a;
-    --muted: #64748b;
-  }
+/* ======= NAV ======= */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--transition)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;height:68px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-img{width:100px;height:100px;object-fit:contain}
+.logo-text{font-size:1.35rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
+.nav-links a{font-size:0.82rem;font-weight:500;color:var(--text2);padding:8px 11px;border-radius:8px;transition:var(--transition);white-space:nowrap}
+.nav-links a:hover{color:var(--orange);background:var(--orange-glow2)}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.btn-login{font-size:0.85rem;font-weight:600;color:var(--orange);padding:9px 18px;border-radius:10px;border:1.5px solid var(--orange);background:transparent;transition:var(--transition)}
+.btn-login:hover{background:var(--orange-glow)}
+.btn-signup{font-size:0.85rem;font-weight:600;color:#fff;padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));transition:var(--transition);box-shadow:0 4px 14px var(--orange-glow)}
+.btn-signup:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,107,0,0.35)}
+.theme-toggle{width:40px;height:40px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:var(--transition)}
+.theme-toggle:hover{background:var(--orange-glow);border-color:var(--orange)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--transition)}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;width:100%;background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;z-index:999;flex-direction:column;gap:4px;max-height:calc(100vh - 68px);overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:12px 16px;border-radius:8px;font-size:0.9rem;font-weight:500;color:var(--text2);transition:var(--transition)}
+.mobile-menu a:hover{background:var(--orange-glow2);color:var(--orange)}
+.mobile-menu-bottom{display:flex;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.mobile-menu-bottom .btn-login,.mobile-menu-bottom .btn-signup{flex:1;text-align:center;padding:11px 0;font-size:0.88rem}
 
-  /* Mesh background */
-  .mesh-bg {
-    background: var(--bg);
-    position: relative;
-    overflow: hidden;
-  }
-  .mesh-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 20% 20%, rgba(59,130,246,0.13) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(139,92,246,0.12) 0%, transparent 60%);
-    pointer-events: none;
-  }
+/* ======= HERO ======= */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 24px 60px;position:relative;overflow:hidden;background:var(--bg)}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(255,107,0,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,166,77,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange-glow);border:1px solid rgba(255,107,0,0.2);color:var(--orange);font-size:0.8rem;font-weight:600;padding:7px 14px;border-radius:50px;margin-bottom:20px;animation:fadeInUp 0.6s ease}
+.hero-badge .dot{width:7px;height:7px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+.hero h1{font-size:clamp(2rem,4vw,3.4rem);font-weight:900;line-height:1.15;letter-spacing:-1.5px;margin-bottom:20px;animation:fadeInUp 0.7s ease 0.1s both}
+.hero h1 span{background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:var(--text3);line-height:1.7;margin-bottom:36px;max-width:520px;animation:fadeInUp 0.7s ease 0.2s both}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;animation:fadeInUp 0.7s ease 0.3s both}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;font-weight:700;font-size:0.95rem;padding:14px 28px;border-radius:12px;transition:var(--transition);box-shadow:var(--shadow2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,107,0,0.4)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text);font-weight:600;font-size:0.95rem;padding:13px 28px;border-radius:12px;border:2px solid var(--border);transition:var(--transition)}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-glow2)}
+.hero-stats{display:flex;gap:28px;flex-wrap:wrap;animation:fadeInUp 0.7s ease 0.4s both}
+.stat-item{text-align:center}
+.stat-num{font-size:1.5rem;font-weight:800;color:var(--orange);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--text3);font-weight:500;margin-top:2px}
+.stat-divider{width:1px;background:var(--border);align-self:stretch}
+.hero-visual{position:relative;animation:fadeInRight 0.8s ease 0.3s both}
+@keyframes fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.dashboard-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.dashboard-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange-light))}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.dash-title{font-weight:700;font-size:0.95rem}
+.dash-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem}
+.dash-courses{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.dash-course{display:flex;align-items:center;gap:12px}
+.course-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ci-1{background:rgba(255,107,0,0.15)}
+.ci-2{background:rgba(59,130,246,0.15)}
+.ci-3{background:rgba(16,185,129,0.15)}
+.course-info{flex:1}
+.course-name{font-size:0.8rem;font-weight:600}
+.progress-bar{height:5px;background:var(--bg3);border-radius:3px;margin-top:5px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transition:width 1.5s ease}
+.course-pct{font-size:0.72rem;color:var(--orange);font-weight:600}
+.dash-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dash-stat{background:var(--bg3);border-radius:12px;padding:12px;text-align:center}
+.dash-stat-num{font-size:1.2rem;font-weight:800;color:var(--orange)}
+.dash-stat-label{font-size:0.68rem;color:var(--text3)}
+.floating-chip{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:600;animation:float 4s ease-in-out infinite}
+.fc-1{top:-20px;right:20px;animation-delay:0s}
+.fc-2{bottom:20px;left:-20px;animation-delay:1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.chip-icon{font-size:1.2rem}
 
-  .glass {
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border);
-  }
+/* ======= TRUSTED BY ======= */
+.trusted{padding:40px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.trusted-inner{max-width:1400px;margin:0 auto}
+.trusted-label{text-align:center;font-size:0.82rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+.logos-track{overflow:hidden;position:relative}
+.logos-track::before,.logos-track::after{content:'';position:absolute;top:0;z-index:1;width:80px;height:100%;pointer-events:none}
+.logos-track::before{left:0;background:linear-gradient(to right,var(--bg2),transparent)}
+.logos-track::after{right:0;background:linear-gradient(to left,var(--bg2),transparent)}
+.logos-slide{display:flex;gap:40px;width:max-content;animation:scroll 22s linear infinite}
+.logos-slide:hover{animation-play-state:paused}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.company-logo{display:flex;align-items:center;gap:8px;font-size:0.9rem;font-weight:700;color:var(--text3);white-space:nowrap;padding:0 10px;opacity:0.6;transition:var(--transition);filter:grayscale(1)}
+.company-logo:hover{opacity:1;color:var(--orange);filter:grayscale(0)}
+.company-logo .co-icon{font-size:1.3rem}
 
-  .glass-light {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0,0,0,0.06);
-  }
+/* ======= SECTION COMMON ======= */
+section{padding:80px 24px}
+.section-inner{max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:56px}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:var(--orange-glow);color:var(--orange);font-size:0.75rem;font-weight:700;padding:6px 14px;border-radius:50px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.section-title{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.5px;margin-bottom:14px;line-height:1.2}
+.section-title span{background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{font-size:1rem;color:var(--text3);max-width:600px;margin:0 auto;line-height:1.7}
 
-  .grad-text {
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 60%, #f472b6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+/* ======= CATEGORIES ======= */
+.categories{background:var(--bg)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 20px;cursor:pointer;transition:var(--transition);position:relative;overflow:hidden}
+.cat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange),var(--orange-light));opacity:0;transition:var(--transition)}
+.cat-card:hover{transform:translateY(-6px);border-color:var(--orange);box-shadow:var(--shadow2)}
+.cat-card:hover::after{opacity:0.05}
+.cat-icon{width:48px;height:48px;border-radius:12px;background:var(--orange-glow);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:14px;transition:var(--transition)}
+.cat-card:hover .cat-icon{background:var(--orange);transform:scale(1.1)}
+.cat-name{font-weight:700;font-size:0.92rem;margin-bottom:6px}
+.cat-count{font-size:0.78rem;color:var(--text3)}
+.cat-arrow{position:absolute;top:20px;right:20px;color:var(--text3);transition:var(--transition);font-size:1.1rem}
+.cat-card:hover .cat-arrow{color:var(--orange);transform:translate(3px,-3px)}
 
-  .btn-grad {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-  .btn-grad::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .btn-grad:hover::before { opacity: 1; }
-  .btn-grad > * { position: relative; z-index: 1; }
-  .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,102,241,0.4); }
+/* ======= COURSES ======= */
+.courses{background:var(--bg2)}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.course-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--transition);cursor:pointer}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.12)}
+.course-thumb{height:180px;position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.course-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.course-badge{position:absolute;top:12px;left:12px;background:var(--orange);color:#fff;font-size:0.68rem;font-weight:700;padding:4px 10px;border-radius:6px;text-transform:uppercase}
+.wishlist-btn{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.9rem;transition:var(--transition)}
+.wishlist-btn:hover{background:rgba(255,107,0,0.8);transform:scale(1.1)}
+.course-body{padding:18px}
+.course-category{font-size:0.72rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.course-title{font-size:0.95rem;font-weight:700;margin-bottom:10px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.course-instructor{font-size:0.78rem;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.instructor-dot{width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.6rem;font-weight:700}
+.course-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.rating{display:flex;align-items:center;gap:4px;font-size:0.78rem;font-weight:600;color:#F59E0B}
+.students{font-size:0.75rem;color:var(--text3)}
+.duration{font-size:0.75rem;color:var(--text3);display:flex;align-items:center;gap:3px}
+.course-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border)}
+.course-price{font-size:1.1rem;font-weight:800;color:var(--orange)}
+.course-price small{font-size:0.75rem;color:var(--text3);text-decoration:line-through;margin-left:6px;font-weight:400}
+.btn-enroll{background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;font-size:0.8rem;font-weight:700;padding:9px 18px;border-radius:9px;transition:var(--transition)}
+.btn-enroll:hover{transform:scale(1.05);box-shadow:0 4px 14px var(--orange-glow)}
 
-  .card-hover {
-    transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
-  }
-  .card-hover:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
-  }
+/* ======= LEARNING PATHS ======= */
+.learning-paths{background:var(--bg)}
+.paths-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.path-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;transition:var(--transition);position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light))}
+.path-card:hover{transform:translateY(-5px);box-shadow:var(--shadow2)}
+.path-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.path-title{font-size:1.1rem;font-weight:800;margin-bottom:8px}
+.path-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.path-tag{font-size:0.7rem;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--orange-glow);color:var(--orange)}
+.path-details{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.path-detail{background:var(--bg3);border-radius:10px;padding:12px}
+.pd-label{font-size:0.68rem;color:var(--text3);font-weight:500;margin-bottom:2px}
+.pd-value{font-size:0.85rem;font-weight:700;color:var(--text)}
+.pd-value.salary{color:var(--orange)}
+.btn-path{display:block;text-align:center;background:var(--orange-glow);color:var(--orange);font-weight:700;font-size:0.85rem;padding:11px;border-radius:10px;transition:var(--transition)}
+.btn-path:hover{background:var(--orange);color:#fff}
 
-  .dark-mode .card-hover:hover {
-    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.15);
-  }
+/* ======= LIVE CLASSES ======= */
+.live-classes{background:var(--bg2)}
+.live-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.live-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;transition:var(--transition);position:relative}
+.live-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2)}
+.live-indicator{display:inline-flex;align-items:center;gap:6px;background:rgba(239,68,68,0.1);color:#EF4444;font-size:0.72rem;font-weight:700;padding:5px 12px;border-radius:50px;margin-bottom:16px}
+.live-dot{width:7px;height:7px;background:#EF4444;border-radius:50%;animation:pulse 1.5s infinite}
+.upcoming-indicator{display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,0.1);color:#3B82F6;font-size:0.72rem;font-weight:700;padding:5px 12px;border-radius:50px;margin-bottom:16px}
+.live-title{font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.4}
+.live-instructor{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.li-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem}
+.li-name{font-size:0.82rem;font-weight:600}
+.li-role{font-size:0.72rem;color:var(--text3)}
+.countdown{display:flex;gap:10px;margin-bottom:16px}
+.cd-unit{background:var(--bg3);border-radius:8px;padding:8px 12px;text-align:center;min-width:52px}
+.cd-num{font-size:1.1rem;font-weight:800;color:var(--orange);line-height:1}
+.cd-label{font-size:0.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+.cd-sep{font-size:1.2rem;font-weight:700;color:var(--orange);align-self:center;margin-top:-4px}
+.btn-register{display:block;text-align:center;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;font-weight:700;font-size:0.85rem;padding:11px;border-radius:10px;transition:var(--transition)}
+.btn-register:hover{box-shadow:0 6px 20px var(--orange-glow);transform:translateY(-1px)}
 
-  /* Orbit rings */
-  .orbit-ring {
-    border: 1px solid rgba(99,102,241,0.15);
-    border-radius: 50%;
-    position: absolute;
-    animation: orbit-spin 20s linear infinite;
-  }
-  @keyframes orbit-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+/* ======= INTERNSHIP ======= */
+.internships{background:var(--bg)}
+.intern-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.intern-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:var(--transition)}
+.intern-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2);border-color:var(--orange)}
+.intern-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.intern-company{display:flex;align-items:center;gap:10px}
+.company-badge{width:42px;height:42px;border-radius:10px;background:var(--orange-glow);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.company-name{font-size:0.9rem;font-weight:700}
+.company-type{font-size:0.72rem;color:var(--text3)}
+.paid-badge{background:rgba(16,185,129,0.12);color:#10B981;font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:6px}
+.remote-badge{background:rgba(59,130,246,0.12);color:#3B82F6;font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:6px;margin-left:6px}
+.intern-role{font-size:1rem;font-weight:700;margin-bottom:6px}
+.intern-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.intern-tag{font-size:0.7rem;padding:3px 9px;border-radius:5px;background:var(--bg3);color:var(--text3)}
+.intern-details{display:flex;gap:16px;margin-bottom:16px}
+.intern-detail{font-size:0.78rem;color:var(--text3);display:flex;align-items:center;gap:4px}
+.btn-apply{display:block;text-align:center;border:1.5px solid var(--orange);color:var(--orange);font-weight:700;font-size:0.83rem;padding:10px;border-radius:10px;transition:var(--transition)}
+.btn-apply:hover{background:var(--orange);color:#fff}
 
-  /* Scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ======= CERTIFICATION ======= */
+.certifications{background:var(--bg2)}
+.cert-content{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+.cert-list{display:flex;flex-direction:column;gap:16px;margin:28px 0}
+.cert-item{display:flex;align-items:flex-start;gap:14px;padding:18px;background:var(--bg3);border-radius:14px;transition:var(--transition)}
+.cert-item:hover{background:var(--orange-glow2);transform:translateX(6px)}
+.cert-item-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cert-item-title{font-size:0.92rem;font-weight:700;margin-bottom:4px}
+.cert-item-desc{font-size:0.78rem;color:var(--text3)}
+.cert-preview{position:relative}
+.cert-card{background:linear-gradient(135deg,#1a0a00,#2d1200);border-radius:20px;padding:36px;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(255,107,0,0.25)}
+.cert-card::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,107,0,0.3),transparent);border-radius:50%}
+.cert-watermark{position:absolute;bottom:20px;right:20px;font-size:4rem;opacity:0.06}
+.cert-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.cert-logo-text{font-size:1rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cert-seal{width:50px;height:50px;border-radius:50%;border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.cert-presented{font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.cert-student{font-size:1.6rem;font-weight:800;margin-bottom:16px;background:linear-gradient(135deg,#fff,rgba(255,255,255,0.7));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cert-course{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.5;margin-bottom:24px}
+.cert-footer{display:flex;justify-content:space-between;align-items:flex-end}
+.cert-date,.cert-id{font-size:0.72rem;color:rgba(255,255,255,0.4)}
+.cert-date span,.cert-id span{display:block;font-size:0.82rem;color:rgba(255,255,255,0.8);font-weight:600;margin-top:2px}
+.cert-border{position:absolute;inset:8px;border:1px solid rgba(255,107,0,0.2);border-radius:15px;pointer-events:none}
 
-  /* Stat counter */
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-  }
+/* ======= WHY CHOOSE ======= */
+.why-choose{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;transition:var(--transition);text-align:center}
+.why-card:hover{transform:translateY(-5px);border-color:var(--orange);box-shadow:var(--shadow2)}
+.why-icon{width:56px;height:56px;border-radius:16px;background:var(--orange-glow);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 16px;transition:var(--transition)}
+.why-card:hover .why-icon{background:linear-gradient(135deg,var(--orange),var(--orange-light));transform:scale(1.1)}
+.why-title{font-size:0.95rem;font-weight:700;margin-bottom:8px}
+.why-desc{font-size:0.8rem;color:var(--text3);line-height:1.6}
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 3px; }
+/* ======= TESTIMONIALS ======= */
+.testimonials{background:var(--bg2)}
+.testimonials-track{position:relative;overflow:hidden}
+.testimonials-slide{display:flex;gap:24px;transition:transform 0.5s cubic-bezier(.4,0,.2,1)}
+.testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;min-width:320px;flex-shrink:0;transition:var(--transition)}
+.test-quote{font-size:2rem;color:var(--orange);line-height:1;margin-bottom:12px}
+.test-text{font-size:0.88rem;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.test-footer{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem;flex-shrink:0}
+.test-name{font-size:0.88rem;font-weight:700}
+.test-role{font-size:0.75rem;color:var(--text3)}
+.test-salary{font-size:0.72rem;color:#10B981;font-weight:600;margin-top:2px}
+.test-rating{display:flex;gap:2px;font-size:0.8rem;margin-top:4px;color:#F59E0B}
+.testi-controls{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.testi-btn{width:40px;height:40px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);font-size:1rem;color:var(--text);transition:var(--transition)}
+.testi-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.testi-dots{display:flex;align-items:center;gap:6px}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:var(--transition);cursor:pointer}
+.testi-dot.active{background:var(--orange);width:20px;border-radius:4px}
 
-  /* Rating stars */
-  .stars::after {
-    content: '★★★★★';
-    letter-spacing: 2px;
-  }
+/* ======= COMMUNITY ======= */
+.community{background:var(--bg);position:relative;overflow:hidden}
+.community::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,var(--orange-glow) 0%,transparent 70%);pointer-events:none}
+.community-inner{max-width:900px;margin:0 auto;text-align:center}
+.community-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:40px 0}
+.community-stat{text-align:center}
+.cs-num{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cs-label{font-size:0.82rem;color:var(--text3);margin-top:2px}
+.community-features{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+.comm-feat{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 20px;font-size:0.85rem;font-weight:600;transition:var(--transition)}
+.comm-feat:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.comm-feat-icon{font-size:1.2rem}
+.btn-community{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;font-weight:700;font-size:1rem;padding:16px 36px;border-radius:14px;transition:var(--transition);box-shadow:var(--shadow2)}
+.btn-community:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,107,0,0.4)}
 
-  /* Mobile menu */
-  .nav-mobile { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.22,1,.36,1); }
-  .nav-mobile.open { max-height: 400px; }
+/* ======= PLACEMENT ======= */
+.placement{background:var(--bg2)}
+.placement-content{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:center}
+.placement-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ps-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;text-align:center;transition:var(--transition)}
+.ps-card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.ps-num{font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ps-label{font-size:0.78rem;color:var(--text3);margin-top:4px}
+.partners-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.partner-logo{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px 12px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--text3);text-align:center;transition:var(--transition);gap:6px}
+.partner-logo:hover{background:var(--orange-glow);border-color:var(--orange);color:var(--orange)}
 
-  /* Underline effect for nav links */
-  .nav-link {
-    position: relative;
-  }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-    border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-  .nav-link:hover::after { width: 100%; }
+/* ======= BLOG ======= */
+.blog{background:var(--bg)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--transition);cursor:pointer}
+.blog-card:hover{transform:translateY(-5px);box-shadow:var(--shadow2)}
+.blog-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+.blog-cat-badge{position:absolute;bottom:14px;left:14px;font-size:0.7rem;font-weight:700;padding:4px 12px;border-radius:6px}
+.bc-tech{background:rgba(59,130,246,0.15);color:#3B82F6}
+.bc-career{background:rgba(16,185,129,0.15);color:#10B981}
+.bc-tutorial{background:rgba(255,107,0,0.15);color:var(--orange)}
+.blog-body{padding:20px}
+.blog-title{font-size:0.95rem;font-weight:700;margin-bottom:8px;line-height:1.4}
+.blog-meta{display:flex;align-items:center;gap:14px;font-size:0.75rem;color:var(--text3)}
+.blog-date{display:flex;align-items:center;gap:4px}
+.blog-read-time{display:flex;align-items:center;gap:4px}
 
-  /* Noise overlay */
-  .noise {
-    position: relative;
-  }
-  .noise::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    opacity: 0.4;
-  }
+/* ======= FAQ ======= */
+.faq{background:var(--bg2)}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:var(--transition)}
+.faq-item.open{border-color:var(--orange)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;cursor:pointer;gap:12px}
+.faq-q span{font-size:0.92rem;font-weight:600;line-height:1.4}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:1rem;transition:var(--transition);flex-shrink:0;color:var(--text3)}
+.faq-item.open .faq-icon{background:var(--orange);color:#fff;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.3s ease}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 20px}
+.faq-a p{font-size:0.85rem;color:var(--text3);line-height:1.7}
 
-  /* Light mode overrides */
-  body.light-mode {
-    background: #f0f4ff;
-    color: #0f172a;
-  }
-  body.light-mode .mesh-bg { background: #f0f4ff; }
-  body.light-mode .glass {
-    background: rgba(255,255,255,0.75);
-    border-color: rgba(0,0,0,0.07);
-  }
-  body.light-mode .text-slate-300 { color: #475569; }
-  body.light-mode .text-slate-400 { color: #64748b; }
-  body.light-mode .text-white { color: #0f172a; }
-  body.light-mode .hero-text { color: #0f172a; }
-  body.light-mode .surface-card {
-    background: #ffffff;
-    border-color: rgba(0,0,0,0.06);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-  }
-  body.light-mode .surface-section { background: #f8f9ff; }
-  body.light-mode .footer-bg { background: #0f172a; }
+/* ======= CTA ======= */
+.cta-section{background:linear-gradient(135deg,var(--orange),var(--orange-light));padding:80px 24px;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:rgba(255,255,255,0.08);border-radius:50%}
+.cta-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;background:rgba(0,0,0,0.06);border-radius:50%}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta-inner h2{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:16px}
+.cta-inner p{font-size:1.05rem;color:rgba(255,255,255,0.85);margin-bottom:36px;line-height:1.7}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-cta-white{background:#fff;color:var(--orange);font-weight:700;font-size:0.95rem;padding:14px 30px;border-radius:12px;transition:var(--transition)}
+.btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.btn-cta-outline{background:transparent;color:#fff;font-weight:700;font-size:0.95rem;padding:13px 30px;border-radius:12px;border:2px solid rgba(255,255,255,0.6);transition:var(--transition)}
+.btn-cta-outline:hover{background:rgba(255,255,255,0.15);border-color:#fff}
 
-  .surface-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
-  }
-  .surface-section { background: rgba(255,255,255,0.02); }
+/* ======= FOOTER ======= */
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 24px 0}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .logo-text{font-size:1.4rem;margin-bottom:12px;display:block}
+.footer-desc{font-size:0.83rem;color:var(--text3);line-height:1.7;margin-bottom:20px;max-width:280px}
+.footer-socials{display:flex;gap:10px}
+.social-btn{width:36px;height:36px;border-radius:9px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:var(--transition)}
+.social-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.footer-col h4{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px;color:var(--text)}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:0.82rem;color:var(--text3);transition:var(--transition)}
+.footer-col ul li a:hover{color:var(--orange)}
+.footer-newsletter h4{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.footer-newsletter p{font-size:0.78rem;color:var(--text3);margin-bottom:14px;line-height:1.5}
+.newsletter-form{display:flex;gap:8px}
+.newsletter-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px;font-size:0.82rem;color:var(--text);font-family:inherit;outline:none;transition:var(--transition)}
+.newsletter-input:focus{border-color:var(--orange)}
+.newsletter-input::placeholder{color:var(--text3)}
+.btn-subscribe{background:var(--orange);color:#fff;font-size:0.8rem;font-weight:700;padding:10px 16px;border-radius:9px;transition:var(--transition)}
+.btn-subscribe:hover{background:var(--orange-light)}
+.footer-bottom{border-top:1px solid var(--border);padding:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copyright{font-size:0.78rem;color:var(--text3)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:0.78rem;color:var(--text3);transition:var(--transition)}
+.footer-legal a:hover{color:var(--orange)}
 
-  /* Blob shapes */
-  .blob {
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-    animation: blob-morph 12s ease-in-out infinite;
-  }
-  @keyframes blob-morph {
-    0%,100%{border-radius:60% 40% 70% 30% / 50% 60% 40% 50%}
-    25%{border-radius:40% 60% 30% 70% / 60% 30% 70% 40%}
-    50%{border-radius:70% 30% 50% 50% / 30% 60% 40% 70%}
-    75%{border-radius:30% 70% 60% 40% / 70% 40% 60% 30%}
-  }
+/* ======= MODAL ======= */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:var(--transition)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--bg2);border-radius:20px;padding:36px;width:100%;max-width:420px;position:relative;transform:scale(0.95) translateY(20px);transition:var(--transition);border:1px solid var(--border)}
+.modal-overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--text3);transition:var(--transition)}
+.modal-close:hover{background:var(--orange);color:#fff}
+.modal h2{font-size:1.4rem;font-weight:800;margin-bottom:6px}
+.modal p{font-size:0.85rem;color:var(--text3);margin-bottom:24px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:0.82rem;font-weight:600;margin-bottom:6px}
+.form-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:0.88rem;color:var(--text);font-family:inherit;outline:none;transition:var(--transition)}
+.form-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-glow)}
+.btn-form{width:100%;background:linear-gradient(135deg,var(--orange),var(--orange-light));color:#fff;font-weight:700;font-size:0.95rem;padding:13px;border-radius:11px;margin-top:8px;transition:var(--transition)}
+.btn-form:hover{transform:translateY(-1px);box-shadow:var(--shadow2)}
+.social-login{display:flex;gap:10px;margin-top:16px}
+.btn-social{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px;font-size:0.82rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;transition:var(--transition)}
+.btn-social:hover{border-color:var(--orange);color:var(--orange)}
+.modal-switch{text-align:center;margin-top:16px;font-size:0.82rem;color:var(--text3)}
+.modal-switch a{color:var(--orange);font-weight:600;cursor:pointer}
+.or-divider{display:flex;align-items:center;gap:12px;margin:16px 0;font-size:0.78rem;color:var(--text3)}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
-  /* Pricing toggle */
-  .toggle-pill {
-    transition: transform 0.3s cubic-bezier(.22,1,.36,1);
-  }
+/* ======= SEARCH ======= */
+.search-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:3000;display:flex;align-items:flex-start;justify-content:center;padding:80px 20px;opacity:0;visibility:hidden;transition:var(--transition)}
+.search-overlay.open{opacity:1;visibility:visible}
+.search-box{background:var(--bg2);border-radius:16px;width:100%;max-width:640px;overflow:hidden;border:1px solid var(--border)}
+.search-input-wrap{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.search-input-wrap .si-icon{font-size:1.2rem;color:var(--text3)}
+.search-input{flex:1;background:none;border:none;outline:none;font-size:1rem;font-family:inherit;color:var(--text)}
+.search-input::placeholder{color:var(--text3)}
+.search-close{font-size:0.8rem;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:5px 10px;border-radius:7px;cursor:pointer;transition:var(--transition)}
+.search-close:hover{border-color:var(--orange);color:var(--orange)}
+.search-suggestions{padding:16px 20px}
+.search-tag{font-size:0.72rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.suggestion-chips{display:flex;flex-wrap:wrap;gap:8px}
+.suggestion-chip{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:0.8rem;cursor:pointer;transition:var(--transition)}
+.suggestion-chip:hover{background:var(--orange-glow);border-color:var(--orange);color:var(--orange)}
+
+/* ======= SCROLL REVEAL ======= */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ======= BACK TO TOP ======= */
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow2);z-index:900;opacity:0;visibility:hidden;transition:var(--transition);transform:translateY(10px)}
+.back-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.back-top:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,107,0,0.5)}
+
+/* ======= RESPONSIVE ======= */
+@media(max-width:1200px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr;}.footer-newsletter{grid-column:1/-1}}
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr;gap:40px}.hero-visual{display:none}.cert-content{grid-template-columns:1fr}.placement-content{grid-template-columns:1fr}.nav-links{display:none}.hamburger{display:flex}}
+@media(max-width:768px){section{padding:60px 16px}.hero{padding:90px 16px 50px}.footer-grid{grid-template-columns:1fr 1fr}.community-stats{gap:24px}.hero-stats{gap:16px}.stat-divider{display:none}.partners-logos{grid-template-columns:repeat(3,1fr)}.placement-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}.cta-btns{flex-direction:column;align-items:center}.nav-right .btn-login,.nav-right .btn-signup{display:none}.newsletter-form{flex-direction:column}.partners-logos{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
-<body class="mesh-bg noise text-white" x-data="{ mobileOpen: false, dark: true, annual: true }" :class="dark ? '' : 'light-mode'">
+<body>
 
-<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
-<nav class="fixed top-0 left-0 right-0 z-50 glass" style="background:rgba(11,15,26,0.85); backdrop-filter:blur(24px)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 rounded-lg btn-grad flex items-center justify-center">
-          <svg class="w-4 h-4 text-white relative z-10" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.357l4-2a1 1 0 11.895 1.789L8 8.697V12a1 1 0 01-1 1H5a1 1 0 01-1-1v-1.268l-1.394.597A1 1 0 011 10.5V8a1 1 0 01.553-.894l8-3.5a1 1 0 01.841 0l8 3.5A1 1 0 0119 8v2.5a1 1 0 01-.606.921L17 12.268V16a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2.697l-2 .857v2.34a1 1 0 01-1 1 1 1 0 01-1-1v-2.34L7 13.303V16a1 1 0 11-2 0v-3.5l-1-.429V10a1 1 0 011-1l5-2.143 5 2.143a1 1 0 011 1v2.071l-1 .429V16a1 1 0 11-2 0v-2.697l-1-.429V14a1 1 0 11-2 0v-1.126l-2-.857V16a1 1 0 01-1 1 1 1 0 01-1-1v-3.697l-1.394-.597A1 1 0 012 10.5V8.5z"/>
-          </svg>
-        </div>
-        <span class="font-display font-800 text-xl tracking-tight grad-text" style="font-weight:800">Learnify</span>
-      </a>
-
-      <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#hero" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
-        <a href="#courses" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Courses</a>
-        <a href="#why" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
-        <a href="#pricing" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
-        <a href="#faq" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQ</a>
-      </div>
-
-      <div class="hidden md:flex items-center gap-3">
-        <!-- Dark mode toggle -->
-        <button @click="dark = !dark" class="w-9 h-9 rounded-lg glass flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-          <svg x-show="dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          <svg x-show="!dark" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        </button>
-        <a href="#" class="text-sm font-medium text-slate-300 hover:text-white transition-colors px-4 py-2">Log In</a>
-        <a href="#" class="btn-grad text-sm font-semibold text-white px-5 py-2 rounded-xl">
-          <span>Sign Up Free</span>
-        </a>
-      </div>
-
-      <!-- Mobile hamburger -->
-      <button @click="mobileOpen = !mobileOpen" class="md:hidden w-9 h-9 glass rounded-lg flex items-center justify-center text-slate-300">
-        <svg x-show="!mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg x-show="mobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="D:\baoiam_innovations_pvt_ltd_logo.jpg" class="logo-img">
+      <!--<span class="logo-text">Baoiams</span>-->
     </div>
-
-    <!-- Mobile menu -->
-    <div class="nav-mobile md:hidden" :class="mobileOpen ? 'open' : ''">
-      <div class="pb-4 space-y-1 border-t border-white border-opacity-5 mt-2 pt-4">
-        <a href="#hero" @click="mobileOpen=false" class="block px-3 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all">Home</a>
-        <a href="#courses" @click="mobileOpen=false" class="block px-3 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all">Courses</a>
-        <a href="#why" @click="mobileOpen=false" class="block px-3 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all">About</a>
-        <a href="#pricing" @click="mobileOpen=false" class="block px-3 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white hover:bg-opacity-5 rounded-lg transition-all">Pricing</a>
-        <div class="flex gap-2 px-3 pt-2">
-          <a href="#" class="flex-1 text-center text-sm py-2.5 rounded-xl glass text-slate-300 hover:text-white transition-colors">Log In</a>
-          <a href="#" class="flex-1 text-center btn-grad text-sm font-semibold text-white py-2.5 rounded-xl"><span>Sign Up</span></a>
-        </div>
-      </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#categories">Courses</a>
+      <a href="#paths">Learning Paths</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#internships">Internships</a>
+      <a href="#live">Live Classes</a>
+      <a href="#community">Community</a>
+      <a href="#blog">Resources</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+      <button class="theme-toggle" onclick="openSearch()" title="Search" style="font-size:0.95rem">🔍</button>
+      <button class="btn-login" onclick="openModal('login')">Login</button>
+      <button class="btn-signup" onclick="openModal('signup')">Sign Up</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
-  <!-- Animated background orbs -->
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl blob" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); animation-delay:0s"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-8 blur-3xl blob" style="background:linear-gradient(135deg,#8b5cf6,#ec4899); animation-delay:-4s"></div>
-  <div class="absolute top-1/2 left-1/2 w-64 h-64 rounded-full opacity-5 blur-2xl blob" style="background:linear-gradient(135deg,#06b6d4,#3b82f6); animation-delay:-8s"></div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">🏠 Home</a>
+  <a href="#categories" onclick="closeMenu()">📚 Courses</a>
+  <a href="#paths" onclick="closeMenu()">🗺️ Learning Paths</a>
+  <a href="#certifications" onclick="closeMenu()">🏆 Certifications</a>
+  <a href="#internships" onclick="closeMenu()">💼 Internships</a>
+  <a href="#live" onclick="closeMenu()">📡 Live Classes</a>
+  <a href="#community" onclick="closeMenu()">👥 Community</a>
+  <a href="#blog" onclick="closeMenu()">📰 Resources</a>
+  <a href="#faq" onclick="closeMenu()">❓ FAQ</a>
+  <div class="mobile-menu-bottom">
+    <button class="btn-login" onclick="openModal('login');closeMenu()">Login</button>
+    <button class="btn-signup" onclick="openModal('signup');closeMenu()">Sign Up</button>
+  </div>
+</div>
 
-  <!-- Orbit rings -->
-  <div class="orbit-ring hidden lg:block" style="width:600px;height:600px;top:50%;right:-200px;transform:translateY(-50%)"></div>
-  <div class="orbit-ring hidden lg:block" style="width:420px;height:420px;top:50%;right:-110px;transform:translateY(-50%);animation-direction:reverse;animation-duration:14s"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-24">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <!-- Left: text -->
-      <div class="reveal visible">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 border border-indigo-500 border-opacity-30">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          <span class="text-xs font-medium text-slate-300">200,000+ learners worldwide</span>
-        </div>
-
-        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-800 leading-none tracking-tight hero-text" style="font-weight:800; line-height:1.05">
-          Learn Without
-          <span class="block grad-text mt-1">Limits.</span>
-        </h1>
-
-        <p class="mt-6 text-lg text-slate-400 leading-relaxed max-w-lg">
-          Master in-demand skills with expert-led courses. From AI to design, coding to business — your next career leap starts here.
-        </p>
-
-        <!-- CTA buttons -->
-        <div class="flex flex-wrap gap-4 mt-10">
-          <a href="#courses" class="btn-grad flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-white font-semibold text-sm shadow-lg">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            <span>Start Learning</span>
-          </a>
-          <a href="#courses" class="flex items-center gap-2.5 glass px-7 py-3.5 rounded-2xl font-semibold text-sm text-slate-200 hover:text-white hover:border-indigo-500 hover:border-opacity-50 transition-all">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-            Explore Courses
-          </a>
-        </div>
-
-        <!-- Trust badges -->
-        <div class="flex flex-wrap items-center gap-6 mt-10 pt-10 border-t border-white border-opacity-5">
-          <div class="flex items-center gap-2">
-            <div class="flex -space-x-2">
-              <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=A&backgroundColor=b6e3f4" class="w-8 h-8 rounded-full border-2 border-white border-opacity-20" alt=""/>
-              <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=B&backgroundColor=d1d4f9" class="w-8 h-8 rounded-full border-2 border-white border-opacity-20" alt=""/>
-              <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=C&backgroundColor=c0aede" class="w-8 h-8 rounded-full border-2 border-white border-opacity-20" alt=""/>
-              <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=D&backgroundColor=ffd5dc" class="w-8 h-8 rounded-full border-2 border-white border-opacity-20" alt=""/>
-            </div>
-            <span class="text-xs text-slate-400">+50K joined this month</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <div class="text-yellow-400 text-xs stars"></div>
-            <span class="text-xs text-slate-400">4.9 avg rating</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span class="text-xs text-slate-400">Certificate included</span>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span> #1 EdTech Platform in India</div>
+      <h1>Launch Your Career with <span>Industry-Ready</span> Skills</h1>
+      <p class="hero-sub">Master in-demand technologies through expert-led courses, real-world projects, internships, and certifications. Your career transformation starts here.</p>
+      <div class="hero-cta">
+        <a href="#categories" class="btn-primary">🚀 Explore Courses</a>
+        <button class="btn-outline" onclick="openModal('signup')">▶ Start Learning</button>
       </div>
-
-      <!-- Right: illustration -->
-      <div class="relative hidden lg:flex items-center justify-center">
-        <!-- Central illustration card -->
-        <div class="relative w-full max-w-md" style="animation: float 6s ease-in-out infinite">
-          <div class="glass rounded-3xl p-6 surface-card" style="box-shadow:0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.1)">
-            <!-- Code editor mockup -->
-            <div class="flex items-center gap-2 mb-5">
-              <div class="w-3 h-3 rounded-full bg-red-500 opacity-80"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500 opacity-80"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500 opacity-80"></div>
-              <span class="ml-2 text-xs text-slate-500">machine-learning.py</span>
-            </div>
-            <div class="space-y-2 font-mono text-xs text-left">
-              <div><span class="text-violet-400">import</span> <span class="text-azure-400">numpy</span> <span class="text-violet-400">as</span> <span class="text-white">np</span></div>
-              <div><span class="text-violet-400">from</span> <span class="text-azure-400">sklearn</span> <span class="text-violet-400">import</span> <span class="text-white">LinearRegression</span></div>
-              <div class="mt-2"></div>
-              <div><span class="text-slate-500"># Train your first ML model</span></div>
-              <div><span class="text-azure-400">model</span> <span class="text-slate-300">=</span> <span class="text-yellow-400">LinearRegression</span><span class="text-slate-300">()</span></div>
-              <div><span class="text-azure-400">model</span><span class="text-slate-300">.</span><span class="text-yellow-400">fit</span><span class="text-slate-300">(</span><span class="text-azure-400">X_train</span><span class="text-slate-300">, </span><span class="text-azure-400">y_train</span><span class="text-slate-300">)</span></div>
-              <div class="flex items-center gap-1 mt-1"><span class="w-2 h-4 bg-azure-400 opacity-80 animate-pulse inline-block"></span></div>
-            </div>
-            <!-- Progress bar -->
-            <div class="mt-5 pt-5 border-t border-white border-opacity-5">
-              <div class="flex justify-between text-xs text-slate-400 mb-2">
-                <span>Module 4 of 12</span>
-                <span>33%</span>
-              </div>
-              <div class="h-1.5 bg-white bg-opacity-10 rounded-full">
-                <div class="h-full w-1/3 btn-grad rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating badges -->
-          <div class="absolute -top-5 -right-6 glass rounded-2xl px-4 py-3 flex items-center gap-3 surface-card" style="animation:float 7s ease-in-out infinite; animation-delay:-2s; box-shadow:0 20px 40px rgba(0,0,0,0.4)">
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-lg">🏆</div>
-            <div>
-              <div class="text-xs font-semibold text-white">Certificate Earned</div>
-              <div class="text-xs text-slate-400">Python Expert</div>
-            </div>
-          </div>
-
-          <div class="absolute -bottom-4 -left-8 glass rounded-2xl px-4 py-3 flex items-center gap-3 surface-card" style="animation:float 5s ease-in-out infinite; animation-delay:-4s; box-shadow:0 20px 40px rgba(0,0,0,0.4)">
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-400 to-purple-600 flex items-center justify-center text-lg">✨</div>
-            <div>
-              <div class="text-xs font-semibold text-white">New Streak!</div>
-              <div class="text-xs text-slate-400">14 days in a row</div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num" data-target="200000">0</div><div class="stat-label">Students</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num" data-target="500">0</div><div class="stat-label">Courses</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num" data-target="200">0</div><div class="stat-label">Industry Connections</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num" data-target="100">0</div><div class="stat-label">Hiring Partners</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><div class="stat-num" data-target="95">0</div><div class="stat-label">% Satisfaction</div></div>
       </div>
     </div>
-  </div>
-
-  <!-- Bottom fade -->
-  <div class="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style="background:linear-gradient(to bottom, transparent, #0B0F1A)"></div>
-</section>
-
-<!-- ═══════════════════════════════ STATS ═══════════════════════════════ -->
-<section id="stats" class="py-16 surface-section">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
-      <div class="glass surface-card rounded-2xl p-6 text-center card-hover group">
-        <div class="text-4xl sm:text-5xl stat-num grad-text" data-target="200000">200K+</div>
-        <div class="mt-2 text-sm text-slate-400 font-medium">Active Students</div>
-        <div class="mt-3 w-8 h-0.5 btn-grad mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      </div>
-      <div class="glass surface-card rounded-2xl p-6 text-center card-hover group">
-        <div class="text-4xl sm:text-5xl stat-num grad-text">1,400+</div>
-        <div class="mt-2 text-sm text-slate-400 font-medium">Online Courses</div>
-        <div class="mt-3 w-8 h-0.5 btn-grad mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      </div>
-      <div class="glass surface-card rounded-2xl p-6 text-center card-hover group">
-        <div class="text-4xl sm:text-5xl stat-num grad-text">320+</div>
-        <div class="mt-2 text-sm text-slate-400 font-medium">Expert Instructors</div>
-        <div class="mt-3 w-8 h-0.5 btn-grad mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      </div>
-      <div class="glass surface-card rounded-2xl p-6 text-center card-hover group">
-        <div class="text-4xl sm:text-5xl stat-num grad-text">98%</div>
-        <div class="mt-2 text-sm text-slate-400 font-medium">Success Rate</div>
-        <div class="mt-3 w-8 h-0.5 btn-grad mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    <div class="hero-visual">
+      <div class="floating-chip fc-1"><span class="chip-icon">🏆</span> Certificate Earned!</div>
+      <div class="floating-chip fc-2"><span class="chip-icon">💼</span> Job Offer Received!</div>
+      <div class="dashboard-card">
+        <div class="dash-header">
+          <span class="dash-title">My Learning Dashboard</span>
+          <div class="dash-avatar">RS</div>
+        </div>
+        <div class="dash-courses">
+          <div class="dash-course">
+            <div class="course-icon ci-1">🤖</div>
+            <div class="course-info">
+              <div class="course-name">Machine Learning Mastery</div>
+              <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+            </div>
+            <div class="course-pct">72%</div>
+          </div>
+          <div class="dash-course">
+            <div class="course-icon ci-2">☁️</div>
+            <div class="course-info">
+              <div class="course-name">AWS Cloud Practitioner</div>
+              <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+            </div>
+            <div class="course-pct">45%</div>
+          </div>
+          <div class="dash-course">
+            <div class="course-icon ci-3">💻</div>
+            <div class="course-info">
+              <div class="course-name">Full Stack Development</div>
+              <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+            </div>
+            <div class="course-pct">88%</div>
+          </div>
+        </div>
+        <div class="dash-stats-row">
+          <div class="dash-stat"><div class="dash-stat-num">247</div><div class="dash-stat-label">Hours Learned</div></div>
+          <div class="dash-stat"><div class="dash-stat-num">5</div><div class="dash-stat-label">Certificates</div></div>
+          <div class="dash-stat"><div class="dash-stat-num">12</div><div class="dash-stat-label">Projects Done</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ COURSES ═══════════════════════════════ -->
-<section id="courses" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Heading -->
-    <div class="text-center mb-14 reveal">
-      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-violet-300 border border-violet-500 border-opacity-30">
-        <span>🎓</span> Featured Courses
+<!-- TRUSTED BY -->
+<div class="trusted" id="about">
+  <div class="trusted-inner">
+    <div class="trusted-label">Trusted by students at top companies</div>
+    <div class="logos-track">
+      <div class="logos-slide">
+        <div class="company-logo"><span class="co-icon">🔵</span> Google</div>
+        <div class="company-logo"><span class="co-icon">🟦</span> Microsoft</div>
+        <div class="company-logo"><span class="co-icon">🟠</span> Amazon</div>
+        <div class="company-logo"><span class="co-icon">🔷</span> IBM</div>
+        <div class="company-logo"><span class="co-icon">🔴</span> Oracle</div>
+        <div class="company-logo"><span class="co-icon">🟢</span> Infosys</div>
+        <div class="company-logo"><span class="co-icon">🔵</span> TCS</div>
+        <div class="company-logo"><span class="co-icon">🟣</span> Wipro</div>
+        <div class="company-logo"><span class="co-icon">🟤</span> Accenture</div>
+        <div class="company-logo"><span class="co-icon">🔵</span> Deloitte</div>
+        <div class="company-logo"><span class="co-icon">🔵</span> Google</div>
+        <div class="company-logo"><span class="co-icon">🟦</span> Microsoft</div>
+        <div class="company-logo"><span class="co-icon">🟠</span> Amazon</div>
+        <div class="company-logo"><span class="co-icon">🔷</span> IBM</div>
+        <div class="company-logo"><span class="co-icon">🔴</span> Oracle</div>
+        <div class="company-logo"><span class="co-icon">🟢</span> Infosys</div>
+        <div class="company-logo"><span class="co-icon">🔵</span> TCS</div>
+        <div class="company-logo"><span class="co-icon">🟣</span> Wipro</div>
+        <div class="company-logo"><span class="co-icon">🟤</span> Accenture</div>
+        <div class="company-logo"><span class="co-icon">🔵</span> Deloitte</div>
       </div>
-      <h2 class="font-display text-4xl sm:text-5xl font-800 tracking-tight" style="font-weight:800">
-        Trending <span class="grad-text">Right Now</span>
-      </h2>
-      <p class="mt-4 text-slate-400 max-w-xl mx-auto">Handpicked by our curation team. Practical skills, real-world projects, lifetime access.</p>
     </div>
+  </div>
+</div>
 
-    <!-- Filter tabs -->
-    <div class="flex flex-wrap justify-center gap-2 mb-10 reveal" x-data="{active:'all'}">
-      <button @click="active='all'" :class="active==='all' ? 'btn-grad text-white' : 'glass text-slate-300 hover:text-white'" class="px-5 py-2 rounded-xl text-sm font-medium transition-all">All</button>
-      <button @click="active='dev'" :class="active==='dev' ? 'btn-grad text-white' : 'glass text-slate-300 hover:text-white'" class="px-5 py-2 rounded-xl text-sm font-medium transition-all">Development</button>
-      <button @click="active='design'" :class="active==='design' ? 'btn-grad text-white' : 'glass text-slate-300 hover:text-white'" class="px-5 py-2 rounded-xl text-sm font-medium transition-all">Design</button>
-      <button @click="active='ai'" :class="active==='ai' ? 'btn-grad text-white' : 'glass text-slate-300 hover:text-white'" class="px-5 py-2 rounded-xl text-sm font-medium transition-all">AI & ML</button>
-      <button @click="active='biz'" :class="active==='biz' ? 'btn-grad text-white' : 'glass text-slate-300 hover:text-white'" class="px-5 py-2 rounded-xl text-sm font-medium transition-all">Business</button>
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">📚 Explore</div>
+      <h2 class="section-title">Popular <span>Categories</span></h2>
+      <p class="section-sub">Choose from 500+ courses across 12 in-demand technology categories</p>
     </div>
-
-    <!-- Course cards -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-
-      <!-- Card 1 -->
-      <div class="glass surface-card rounded-3xl overflow-hidden card-hover group">
-        <div class="relative h-48 overflow-hidden" style="background:linear-gradient(135deg, #1e3a5f 0%, #1e1b4b 100%)">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <span class="text-7xl opacity-30">🐍</span>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="font-mono text-xs text-azure-400 opacity-70 text-center leading-relaxed p-4">
-              <div>def train_model():</div>
-              <div class="ml-4 text-slate-400">    X, y = load_data()</div>
-              <div class="ml-4 text-violet-400">    return fit(X, y)</div>
-            </div>
-          </div>
-          <div class="absolute top-3 left-3">
-            <span class="glass text-xs font-medium text-emerald-400 px-3 py-1 rounded-full border border-emerald-500 border-opacity-30">Bestseller</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="glass text-xs font-medium text-slate-300 px-3 py-1 rounded-full">42h</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-medium text-violet-400 bg-violet-400 bg-opacity-10 px-2.5 py-1 rounded-lg">AI & ML</span>
-          </div>
-          <h3 class="font-display font-700 text-base leading-tight text-white" style="font-weight:700">Python for Machine Learning & Data Science</h3>
-          <div class="flex items-center gap-2 mt-3">
-            <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=prof1&backgroundColor=b6e3f4" class="w-6 h-6 rounded-full" alt=""/>
-            <span class="text-xs text-slate-400">Dr. Maya Chen</span>
-          </div>
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center gap-1">
-              <span class="text-yellow-400 text-xs">★★★★★</span>
-              <span class="text-xs text-slate-400">(4.9 · 12.4k)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-500 line-through text-xs">$99</span>
-              <span class="font-display font-700 text-white text-base" style="font-weight:700">$49</span>
-            </div>
-          </div>
-          <button class="mt-4 w-full btn-grad py-2.5 rounded-xl text-sm font-semibold text-white transition-all">
-            <span>Enroll Now</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="glass surface-card rounded-3xl overflow-hidden card-hover group">
-        <div class="relative h-48 overflow-hidden" style="background:linear-gradient(135deg, #1a1044 0%, #2d1b69 100%)">
-          <div class="absolute inset-0 flex items-center justify-center gap-4">
-            <div class="space-y-2">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 opacity-50 blur-sm"></div>
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-400 to-violet-600 opacity-40 blur-sm ml-4"></div>
-            </div>
-            <span class="text-6xl opacity-25">🎨</span>
-          </div>
-          <div class="absolute top-3 left-3">
-            <span class="glass text-xs font-medium text-blue-400 px-3 py-1 rounded-full border border-blue-500 border-opacity-30">New</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="glass text-xs font-medium text-slate-300 px-3 py-1 rounded-full">28h</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-medium text-blue-400 bg-blue-400 bg-opacity-10 px-2.5 py-1 rounded-lg">Design</span>
-          </div>
-          <h3 class="font-display font-700 text-base leading-tight text-white" style="font-weight:700">UI/UX Design Masterclass: Figma to Prototype</h3>
-          <div class="flex items-center gap-2 mt-3">
-            <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=prof2&backgroundColor=d1d4f9" class="w-6 h-6 rounded-full" alt=""/>
-            <span class="text-xs text-slate-400">Alex Rivera</span>
-          </div>
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center gap-1">
-              <span class="text-yellow-400 text-xs">★★★★★</span>
-              <span class="text-xs text-slate-400">(4.8 · 8.1k)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-500 line-through text-xs">$79</span>
-              <span class="font-display font-700 text-white text-base" style="font-weight:700">$39</span>
-            </div>
-          </div>
-          <button class="mt-4 w-full btn-grad py-2.5 rounded-xl text-sm font-semibold text-white">
-            <span>Enroll Now</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="glass surface-card rounded-3xl overflow-hidden card-hover group">
-        <div class="relative h-48 overflow-hidden" style="background:linear-gradient(135deg, #0f2027 0%, #1a3a3a 100%)">
-          <div class="absolute inset-0 flex items-center justify-center font-mono text-xs opacity-20 leading-5 text-emerald-400 p-4 overflow-hidden">
-            {`const [state, setState] =`}<br/>
-            {` useState(null);`}<br/>
-            {`useEffect(() => {`}<br/>
-            {` fetchData();`}<br/>
-            {`}, []);`}
-          </div>
-          <div class="absolute top-3 left-3">
-            <span class="glass text-xs font-medium text-orange-400 px-3 py-1 rounded-full border border-orange-500 border-opacity-30">Hot 🔥</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="glass text-xs font-medium text-slate-300 px-3 py-1 rounded-full">55h</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-medium text-emerald-400 bg-emerald-400 bg-opacity-10 px-2.5 py-1 rounded-lg">Development</span>
-          </div>
-          <h3 class="font-display font-700 text-base leading-tight text-white" style="font-weight:700">The Complete React & Node.js Full-Stack Bootcamp</h3>
-          <div class="flex items-center gap-2 mt-3">
-            <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=prof3&backgroundColor=c0aede" class="w-6 h-6 rounded-full" alt=""/>
-            <span class="text-xs text-slate-400">James Wu</span>
-          </div>
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center gap-1">
-              <span class="text-yellow-400 text-xs">★★★★★</span>
-              <span class="text-xs text-slate-400">(4.9 · 23k)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-500 line-through text-xs">$129</span>
-              <span class="font-display font-700 text-white text-base" style="font-weight:700">$59</span>
-            </div>
-          </div>
-          <button class="mt-4 w-full btn-grad py-2.5 rounded-xl text-sm font-semibold text-white">
-            <span>Enroll Now</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="glass surface-card rounded-3xl overflow-hidden card-hover group">
-        <div class="relative h-48 overflow-hidden" style="background:linear-gradient(135deg, #1a0533 0%, #2d0a52 100%)">
-          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">🧠</div>
-          <div class="absolute top-3 left-3">
-            <span class="glass text-xs font-medium text-pink-400 px-3 py-1 rounded-full border border-pink-500 border-opacity-30">Advanced</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="glass text-xs font-medium text-slate-300 px-3 py-1 rounded-full">36h</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-medium text-pink-400 bg-pink-400 bg-opacity-10 px-2.5 py-1 rounded-lg">AI & ML</span>
-          </div>
-          <h3 class="font-display font-700 text-base leading-tight text-white" style="font-weight:700">Deep Learning with TensorFlow & PyTorch</h3>
-          <div class="flex items-center gap-2 mt-3">
-            <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=prof4&backgroundColor=ffd5dc" class="w-6 h-6 rounded-full" alt=""/>
-            <span class="text-xs text-slate-400">Dr. Priya Sharma</span>
-          </div>
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center gap-1">
-              <span class="text-yellow-400 text-xs">★★★★★</span>
-              <span class="text-xs text-slate-400">(4.7 · 6.8k)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-500 line-through text-xs">$109</span>
-              <span class="font-display font-700 text-white text-base" style="font-weight:700">$54</span>
-            </div>
-          </div>
-          <button class="mt-4 w-full btn-grad py-2.5 rounded-xl text-sm font-semibold text-white">
-            <span>Enroll Now</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="glass surface-card rounded-3xl overflow-hidden card-hover group">
-        <div class="relative h-48 overflow-hidden" style="background:linear-gradient(135deg, #0d1f3c 0%, #162b4d 100%)">
-          <div class="absolute inset-0 flex items-center justify-center text-6xl opacity-20">📊</div>
-          <div class="absolute top-3 left-3">
-            <span class="glass text-xs font-medium text-cyan-400 px-3 py-1 rounded-full border border-cyan-500 border-opacity-30">Popular</span>
-          </div>
-          <div class="absolute top-3 right-3">
-            <span class="glass text-xs font-medium text-slate-300 px-3 py-1 rounded-full">22h</span>
-          </div>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-medium text-cyan-400 bg-cyan-400 bg-opacity-10 px-2.5 py-1 rounded-lg">Business</span>
-          </div>
-          <h3 class="font-display font-700 text-base leading-tight text-white" style="font-weight:700">Growth Marketing & Analytics Masterclass 2025</h3>
-          <div class="flex items-center gap-2 mt-3">
-            <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=prof5&backgroundColor=b6e3f4" class="w-6 h-6 rounded-full" alt=""/>
-            <span class="text-xs text-slate-400">Sarah Johnson</span>
-          </div>
-          <div class="flex items-center justify-between mt-4">
-            <div class="flex items-center gap-1">
-              <span class="text-yellow-400 text-xs">★★★★☆</span>
-              <span class="text-xs text-slate-400">(4.6 · 4.2k)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-500 line-through text-xs">$89</span>
-              <span class="font-display font-700 text-white text-base" style="font-weight:700">$44</span>
-            </div>
-          </div>
-          <button class="mt-4 w-full btn-grad py-2.5 rounded-xl text-sm font-semibold text-white">
-            <span>Enroll Now</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Card 6 — CTA card -->
-      <div class="btn-grad rounded-3xl p-6 flex flex-col items-center justify-center text-center card-hover" style="min-height:340px">
-        <div class="w-16 h-16 rounded-2xl bg-white bg-opacity-20 flex items-center justify-center text-3xl mb-5">🚀</div>
-        <h3 class="font-display text-xl font-700 text-white" style="font-weight:700">View All 1,400+ Courses</h3>
-        <p class="text-sm text-white text-opacity-70 mt-2 mb-6 leading-relaxed">Dive into our full library across every discipline</p>
-        <a href="#" class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold text-sm px-6 py-2.5 rounded-xl transition-all flex items-center gap-2">
-          Browse All
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
-
+    <div class="cat-grid">
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">📊</div><div class="cat-name">Data Science</div><div class="cat-count">48 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">🤖</div><div class="cat-name">Artificial Intelligence</div><div class="cat-count">52 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">🧠</div><div class="cat-name">Machine Learning</div><div class="cat-count">39 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">🔒</div><div class="cat-name">Cybersecurity</div><div class="cat-count">31 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">☁️</div><div class="cat-name">Cloud Computing</div><div class="cat-count">44 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">🌐</div><div class="cat-name">Web Development</div><div class="cat-count">67 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">📱</div><div class="cat-name">Mobile Development</div><div class="cat-count">28 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">⚙️</div><div class="cat-name">DevOps</div><div class="cat-count">22 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">🎨</div><div class="cat-name">UI/UX Design</div><div class="cat-count">35 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">⛓️</div><div class="cat-name">Blockchain</div><div class="cat-count">19 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">📣</div><div class="cat-name">Digital Marketing</div><div class="cat-count">26 courses</div><div class="cat-arrow">↗</div></div>
+      <div class="cat-card reveal" onclick="openModal('signup')"><div class="cat-icon">💻</div><div class="cat-name">Software Engineering</div><div class="cat-count">41 courses</div><div class="cat-arrow">↗</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ WHY CHOOSE US ═══════════════════════════════ -->
-<section id="why" class="py-24 surface-section">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <!-- Left -->
+<!-- FEATURED COURSES -->
+<section class="courses" id="featured">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">⭐ Trending</div>
+      <h2 class="section-title">Featured <span>Courses</span></h2>
+      <p class="section-sub">Hand-picked courses by our expert team for maximum career impact</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#1a0533,#2d0f4a)"><div class="course-thumb-inner">🤖</div><span class="course-badge">Bestseller</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">Artificial Intelligence</div>
+          <div class="course-title">Complete AI & Machine Learning Bootcamp 2025</div>
+          <div class="course-instructor"><div class="instructor-dot">DK</div> Dr. Deepak Kumar</div>
+          <div class="course-meta"><div class="rating">⭐ 4.9 <span style="color:var(--text3);font-weight:400">(2.4k)</span></div><div class="students">👥 18,420 students</div><div class="duration">⏱ 42h</div></div>
+          <div class="course-footer"><div class="course-price">₹2,499 <small>₹9,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#001a33,#002b52)"><div class="course-thumb-inner">☁️</div><span class="course-badge">New</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">Cloud Computing</div>
+          <div class="course-title">AWS Solutions Architect – Associate Certification</div>
+          <div class="course-instructor"><div class="instructor-dot">PS</div> Priya Sharma</div>
+          <div class="course-meta"><div class="rating">⭐ 4.8 <span style="color:var(--text3);font-weight:400">(1.8k)</span></div><div class="students">👥 12,330 students</div><div class="duration">⏱ 38h</div></div>
+          <div class="course-footer"><div class="course-price">₹1,999 <small>₹7,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#0a1a00,#143300)"><div class="course-thumb-inner">🌐</div><span class="course-badge">Popular</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">Web Development</div>
+          <div class="course-title">Full Stack Development with React & Node.js</div>
+          <div class="course-instructor"><div class="instructor-dot">AV</div> Amit Verma</div>
+          <div class="course-meta"><div class="rating">⭐ 4.9 <span style="color:var(--text3);font-weight:400">(3.1k)</span></div><div class="students">👥 24,180 students</div><div class="duration">⏱ 58h</div></div>
+          <div class="course-footer"><div class="course-price">₹2,999 <small>₹11,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#1a0a00,#332000)"><div class="course-thumb-inner">📊</div><span class="course-badge">Trending</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">Data Science</div>
+          <div class="course-title">Data Science with Python – From Zero to Hero</div>
+          <div class="course-instructor"><div class="instructor-dot">RK</div> Rahul Khanna</div>
+          <div class="course-meta"><div class="rating">⭐ 4.7 <span style="color:var(--text3);font-weight:400">(2.9k)</span></div><div class="students">👥 31,450 students</div><div class="duration">⏱ 48h</div></div>
+          <div class="course-footer"><div class="course-price">₹2,299 <small>₹8,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#1a001a,#330033)"><div class="course-thumb-inner">🔒</div><span class="course-badge">Hot</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">Cybersecurity</div>
+          <div class="course-title">Ethical Hacking & Penetration Testing Complete Guide</div>
+          <div class="course-instructor"><div class="instructor-dot">SM</div> Sanjay Mishra</div>
+          <div class="course-meta"><div class="rating">⭐ 4.8 <span style="color:var(--text3);font-weight:400">(1.6k)</span></div><div class="students">👥 9,870 students</div><div class="duration">⏱ 45h</div></div>
+          <div class="course-footer"><div class="course-price">₹3,299 <small>₹12,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+      <div class="course-card reveal">
+        <div class="course-thumb" style="background:linear-gradient(135deg,#00101a,#002033)"><div class="course-thumb-inner">⚙️</div><span class="course-badge">Bestseller</span><button class="wishlist-btn">♡</button></div>
+        <div class="course-body">
+          <div class="course-category">DevOps</div>
+          <div class="course-title">DevOps & CI/CD with Docker, Kubernetes & Jenkins</div>
+          <div class="course-instructor"><div class="instructor-dot">NP</div> Neha Patel</div>
+          <div class="course-meta"><div class="rating">⭐ 4.9 <span style="color:var(--text3);font-weight:400">(1.2k)</span></div><div class="students">👥 7,640 students</div><div class="duration">⏱ 36h</div></div>
+          <div class="course-footer"><div class="course-price">₹2,799 <small>₹10,999</small></div><button class="btn-enroll" onclick="openModal('signup')">Enroll</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING PATHS -->
+<section class="learning-paths" id="paths">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">🗺️ Roadmaps</div>
+      <h2 class="section-title">Structured <span>Learning Paths</span></h2>
+      <p class="section-sub">Follow a step-by-step roadmap curated by industry experts to land your dream job</p>
+    </div>
+    <div class="paths-grid">
+      <div class="path-card reveal">
+        <div class="path-icon">📊</div>
+        <div class="path-title">Data Scientist</div>
+        <div class="path-tags"><span class="path-tag">Python</span><span class="path-tag">ML</span><span class="path-tag">Statistics</span><span class="path-tag">SQL</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">8 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">12 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹8–22 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">50K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+      <div class="path-card reveal">
+        <div class="path-icon">🤖</div>
+        <div class="path-title">AI Engineer</div>
+        <div class="path-tags"><span class="path-tag">Deep Learning</span><span class="path-tag">TensorFlow</span><span class="path-tag">PyTorch</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">10 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">15 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹12–30 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">30K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+      <div class="path-card reveal">
+        <div class="path-icon">🌐</div>
+        <div class="path-title">Full Stack Developer</div>
+        <div class="path-tags"><span class="path-tag">React</span><span class="path-tag">Node.js</span><span class="path-tag">MongoDB</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">9 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">14 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹7–18 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">80K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+      <div class="path-card reveal">
+        <div class="path-icon">🔒</div>
+        <div class="path-title">Cybersecurity Analyst</div>
+        <div class="path-tags"><span class="path-tag">Ethical Hacking</span><span class="path-tag">Network</span><span class="path-tag">SOC</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">7 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">10 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹6–20 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">25K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+      <div class="path-card reveal">
+        <div class="path-icon">☁️</div>
+        <div class="path-title">Cloud Engineer</div>
+        <div class="path-tags"><span class="path-tag">AWS</span><span class="path-tag">Azure</span><span class="path-tag">GCP</span><span class="path-tag">Terraform</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">6 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">9 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹9–25 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">40K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+      <div class="path-card reveal">
+        <div class="path-icon">⚙️</div>
+        <div class="path-title">DevOps Engineer</div>
+        <div class="path-tags"><span class="path-tag">Docker</span><span class="path-tag">K8s</span><span class="path-tag">CI/CD</span><span class="path-tag">Linux</span></div>
+        <div class="path-details">
+          <div class="path-detail"><div class="pd-label">Duration</div><div class="pd-value">7 Months</div></div>
+          <div class="path-detail"><div class="pd-label">Courses</div><div class="pd-value">11 Courses</div></div>
+          <div class="path-detail"><div class="pd-label">Avg Salary</div><div class="pd-value salary">₹8–22 LPA</div></div>
+          <div class="path-detail"><div class="pd-label">Openings</div><div class="pd-value">35K+ Jobs</div></div>
+        </div>
+        <a class="btn-path" href="#" onclick="openModal('signup');return false">Start Path →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE CLASSES -->
+<section class="live-classes" id="live">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">📡 Live</div>
+      <h2 class="section-title">Upcoming <span>Live Classes</span></h2>
+      <p class="section-sub">Learn directly from industry experts in real-time interactive sessions</p>
+    </div>
+    <div class="live-grid">
+      <div class="live-card reveal">
+        <div class="live-indicator"><div class="live-dot"></div> LIVE NOW</div>
+        <div class="live-title">Introduction to Generative AI & LLMs</div>
+        <div class="live-instructor"><div class="li-avatar">AP</div><div><div class="li-name">Ananya Pillai</div><div class="li-role">AI Research Engineer, Google</div></div></div>
+        <button class="btn-register" onclick="openModal('signup')">Join Live Session →</button>
+      </div>
+      <div class="live-card reveal">
+        <div class="upcoming-indicator">🕐 Upcoming in</div>
+        <div class="live-title">Kubernetes for Production: Best Practices & Scaling</div>
+        <div class="live-instructor"><div class="li-avatar">VR</div><div><div class="li-name">Vikram Rao</div><div class="li-role">DevOps Lead, Microsoft</div></div></div>
+        <div class="countdown" id="countdown1">
+          <div class="cd-unit"><div class="cd-num" id="h1">02</div><div class="cd-label">Hrs</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="m1">45</div><div class="cd-label">Min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num" id="s1">30</div><div class="cd-label">Sec</div></div>
+        </div>
+        <button class="btn-register" onclick="openModal('signup')">Register Free →</button>
+      </div>
+      <div class="live-card reveal">
+        <div class="upcoming-indicator">🕐 Tomorrow</div>
+        <div class="live-title">Data Structures & Algorithms – Interview Cracker Series</div>
+        <div class="live-instructor"><div class="li-avatar">MG</div><div><div class="li-name">Meera Gupta</div><div class="li-role">Software Engineer, Amazon</div></div></div>
+        <div class="countdown">
+          <div class="cd-unit"><div class="cd-num">18</div><div class="cd-label">Hrs</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num">30</div><div class="cd-label">Min</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><div class="cd-num">00</div><div class="cd-label">Sec</div></div>
+        </div>
+        <button class="btn-register" onclick="openModal('signup')">Register Free →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIP PORTAL -->
+<section class="internships" id="internships">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">💼 Internships</div>
+      <h2 class="section-title">Internship <span>Portal</span></h2>
+      <p class="section-sub">Get real-world experience with paid internships from top tech companies</p>
+    </div>
+    <div class="intern-grid">
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🔵</div><div><div class="company-name">TechVision India</div><div class="company-type">Product Company</div></div></div><div><span class="paid-badge">Paid</span><span class="remote-badge">Remote</span></div></div>
+        <div class="intern-role">Machine Learning Intern</div>
+        <div class="intern-tags"><span class="intern-tag">Python</span><span class="intern-tag">TensorFlow</span><span class="intern-tag">pandas</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 3 Months</div><div class="intern-detail">💰 ₹15,000/mo</div><div class="intern-detail">🎓 B.Tech/MCA</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🟢</div><div><div class="company-name">DataForge Labs</div><div class="company-type">Data Analytics</div></div></div><div><span class="paid-badge">Paid</span><span class="remote-badge">Remote</span></div></div>
+        <div class="intern-role">Data Analyst Intern</div>
+        <div class="intern-tags"><span class="intern-tag">SQL</span><span class="intern-tag">Power BI</span><span class="intern-tag">Excel</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 6 Months</div><div class="intern-detail">💰 ₹12,000/mo</div><div class="intern-detail">🎓 Any Graduate</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🟠</div><div><div class="company-name">CloudStack Inc.</div><div class="company-type">SaaS Company</div></div></div><div><span class="paid-badge">Paid</span></div></div>
+        <div class="intern-role">Full Stack Developer Intern</div>
+        <div class="intern-tags"><span class="intern-tag">React</span><span class="intern-tag">Node.js</span><span class="intern-tag">MongoDB</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 4 Months</div><div class="intern-detail">💰 ₹20,000/mo</div><div class="intern-detail">🎓 CS Students</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🔷</div><div><div class="company-name">CyberShield Pvt.</div><div class="company-type">Cybersecurity Firm</div></div></div><div><span class="paid-badge">Paid</span><span class="remote-badge">Hybrid</span></div></div>
+        <div class="intern-role">Security Analyst Intern</div>
+        <div class="intern-tags"><span class="intern-tag">Kali Linux</span><span class="intern-tag">VAPT</span><span class="intern-tag">CEH</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 3 Months</div><div class="intern-detail">💰 ₹18,000/mo</div><div class="intern-detail">🎓 CS/IT</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🟣</div><div><div class="company-name">DesignSync</div><div class="company-type">Design Agency</div></div></div><div><span class="paid-badge">Paid</span><span class="remote-badge">Remote</span></div></div>
+        <div class="intern-role">UI/UX Design Intern</div>
+        <div class="intern-tags"><span class="intern-tag">Figma</span><span class="intern-tag">Adobe XD</span><span class="intern-tag">Prototyping</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 2 Months</div><div class="intern-detail">💰 ₹10,000/mo</div><div class="intern-detail">🎓 Any Stream</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+      <div class="intern-card reveal">
+        <div class="intern-header"><div class="intern-company"><div class="company-badge">🔴</div><div><div class="company-name">FinTech Solutions</div><div class="company-type">Fintech Startup</div></div></div><div><span class="paid-badge">Paid</span></div></div>
+        <div class="intern-role">DevOps Intern</div>
+        <div class="intern-tags"><span class="intern-tag">Docker</span><span class="intern-tag">AWS</span><span class="intern-tag">Jenkins</span></div>
+        <div class="intern-details"><div class="intern-detail">⏱ 5 Months</div><div class="intern-detail">💰 ₹16,000/mo</div><div class="intern-detail">🎓 B.Tech</div></div>
+        <a class="btn-apply" href="#" onclick="openModal('signup');return false">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certifications" id="certifications">
+  <div class="section-inner">
+    <div class="cert-content">
       <div class="reveal">
-        <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-azure-400 border border-azure-500 border-opacity-30">
-          <span>⚡</span> Why Learnify
+        <div class="section-badge" style="text-align:left;display:inline-flex">🏆 Certifications</div>
+        <h2 class="section-title" style="text-align:left">Industry-Recognized <span>Certificates</span></h2>
+        <p class="section-sub" style="text-align:left;margin:0 0 8px">Stand out to employers with verifiable digital certificates that carry real industry weight.</p>
+        <div class="cert-list">
+          <div class="cert-item"><div class="cert-item-icon">🔐</div><div><div class="cert-item-title">Blockchain Verified</div><div class="cert-item-desc">Every certificate is cryptographically signed and tamper-proof</div></div></div>
+          <div class="cert-item"><div class="cert-item-icon">🌐</div><div><div class="cert-item-title">Globally Recognized</div><div class="cert-item-desc">Accepted by 100+ companies and institutions worldwide</div></div></div>
+          <div class="cert-item"><div class="cert-item-icon">🔗</div><div><div class="cert-item-title">LinkedIn Ready</div><div class="cert-item-desc">Add directly to your LinkedIn profile with one click</div></div></div>
+          <div class="cert-item"><div class="cert-item-icon">📥</div><div><div class="cert-item-title">Instant Download</div><div class="cert-item-desc">Download PDF certificate immediately upon completion</div></div></div>
         </div>
-        <h2 class="font-display text-4xl sm:text-5xl font-800 tracking-tight" style="font-weight:800">
-          Built for the way<br/>you <span class="grad-text">actually learn</span>
-        </h2>
-        <p class="mt-5 text-slate-400 leading-relaxed">We obsessed over every detail — from how courses are structured to how certificates get shared on LinkedIn. Learning should feel like progress, not homework.</p>
-
-        <div class="mt-8 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full btn-grad flex items-center justify-center flex-shrink-0">
-              <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-sm text-slate-300">No expiry — access courses forever, even after completion</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full btn-grad flex items-center justify-center flex-shrink-0">
-              <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-sm text-slate-300">AI-powered learning paths tailored to your goals</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 rounded-full btn-grad flex items-center justify-center flex-shrink-0">
-              <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-sm text-slate-300">Industry-recognized certificates, shareable in one click</span>
-          </div>
-        </div>
+        <button class="btn-primary" onclick="openModal('signup')">Get Certified Today →</button>
       </div>
-
-      <!-- Right: feature cards -->
-      <div class="grid grid-cols-2 gap-4 reveal">
-        <div class="glass surface-card rounded-2xl p-5 card-hover group">
-          <div class="w-11 h-11 btn-grad rounded-2xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform">🎓</div>
-          <h4 class="font-display font-700 text-sm text-white" style="font-weight:700">Expert Teachers</h4>
-          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Industry pros with 10+ years of real-world experience</p>
-        </div>
-        <div class="glass surface-card rounded-2xl p-5 card-hover group" style="margin-top:20px">
-          <div class="w-11 h-11 btn-grad rounded-2xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform">♾️</div>
-          <h4 class="font-display font-700 text-sm text-white" style="font-weight:700">Lifetime Access</h4>
-          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Buy once, revisit anytime. Your knowledge, forever</p>
-        </div>
-        <div class="glass surface-card rounded-2xl p-5 card-hover group">
-          <div class="w-11 h-11 btn-grad rounded-2xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform">📜</div>
-          <h4 class="font-display font-700 text-sm text-white" style="font-weight:700">Certificates</h4>
-          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Verified certificates recognized by top companies</p>
-        </div>
-        <div class="glass surface-card rounded-2xl p-5 card-hover group" style="margin-top:20px">
-          <div class="w-11 h-11 btn-grad rounded-2xl flex items-center justify-center mb-4 text-xl group-hover:scale-110 transition-transform">📱</div>
-          <h4 class="font-display font-700 text-sm text-white" style="font-weight:700">Flexible Learning</h4>
-          <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Learn at your pace, on any device, anywhere</p>
+      <div class="cert-preview reveal">
+        <div class="cert-card">
+          <div class="cert-border"></div>
+          <div class="cert-watermark">🏆</div>
+          <div class="cert-header">
+            <span class="cert-logo-text">BAOIAMS</span>
+            <div class="cert-seal">🎓</div>
+          </div>
+          <div class="cert-presented">Certificate of Completion</div>
+          <div class="cert-student">Rahul Sharma</div>
+          <div class="cert-course">has successfully completed the program in<br><strong style="color:var(--orange-light)">Artificial Intelligence & Machine Learning</strong><br>with distinction and is recognized for technical excellence</div>
+          <div class="cert-footer">
+            <div class="cert-date">Issue Date<span>March 15, 2025</span></div>
+            <div style="text-align:center"><div style="font-size:0.7rem;color:rgba(255,255,255,0.4)">Verify at</div><div style="font-size:0.72rem;color:var(--orange-light)">cert.baoiams.com</div></div>
+            <div class="cert-id">Certificate ID<span>BAO-2025-AI-04821</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ TESTIMONIALS ═══════════════════════════════ -->
-<section id="testimonials" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-emerald-300 border border-emerald-500 border-opacity-30">
-        <span>💬</span> Student Stories
-      </div>
-      <h2 class="font-display text-4xl sm:text-5xl font-800 tracking-tight" style="font-weight:800">
-        Loved by <span class="grad-text">200K+ learners</span>
-      </h2>
+<!-- WHY CHOOSE US -->
+<section class="why-choose" id="why">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">✨ Why Us</div>
+      <h2 class="section-title">Why Choose <span>Baoiams?</span></h2>
+      <p class="section-sub">We go beyond teaching — we transform careers</p>
     </div>
-
-    <div class="grid md:grid-cols-3 gap-6 reveal">
-
-      <div class="glass surface-card rounded-3xl p-6 card-hover relative">
-        <div class="text-4xl opacity-20 absolute top-4 right-5 font-serif leading-none">"</div>
-        <div class="flex items-center gap-1 mb-4">
-          <span class="text-yellow-400 text-sm">★★★★★</span>
-        </div>
-        <p class="text-sm text-slate-300 leading-relaxed">"I went from knowing zero Python to landing a data science role at a fintech startup in 8 months. The ML course is genuinely world-class — clear explanations, great projects."</p>
-        <div class="flex items-center gap-3 mt-5 pt-5 border-t border-white border-opacity-5">
-          <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=user1&backgroundColor=b6e3f4" class="w-10 h-10 rounded-full" alt=""/>
-          <div>
-            <div class="text-sm font-semibold text-white">Aryan Kapoor</div>
-            <div class="text-xs text-slate-500">Data Scientist · Mumbai</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="glass surface-card rounded-3xl p-6 card-hover relative" style="border-color:rgba(99,102,241,0.25); box-shadow:0 0 0 1px rgba(99,102,241,0.1)">
-        <div class="absolute -top-3 left-6 btn-grad text-xs font-semibold text-white px-3 py-1 rounded-full">Featured Review</div>
-        <div class="text-4xl opacity-20 absolute top-4 right-5 font-serif leading-none">"</div>
-        <div class="flex items-center gap-1 mb-4 mt-2">
-          <span class="text-yellow-400 text-sm">★★★★★</span>
-        </div>
-        <p class="text-sm text-slate-300 leading-relaxed">"The UI/UX course is the best investment I've made in my career. Alex's teaching style is incredible — I built a complete portfolio and got hired within 3 weeks of finishing."</p>
-        <div class="flex items-center gap-3 mt-5 pt-5 border-t border-white border-opacity-5">
-          <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=user2&backgroundColor=d1d4f9" class="w-10 h-10 rounded-full" alt=""/>
-          <div>
-            <div class="text-sm font-semibold text-white">Nadia Osei</div>
-            <div class="text-xs text-slate-500">Product Designer · London</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="glass surface-card rounded-3xl p-6 card-hover relative">
-        <div class="text-4xl opacity-20 absolute top-4 right-5 font-serif leading-none">"</div>
-        <div class="flex items-center gap-1 mb-4">
-          <span class="text-yellow-400 text-sm">★★★★★</span>
-        </div>
-        <p class="text-sm text-slate-300 leading-relaxed">"Took the React bootcamp while working full-time. The flexible pace was a lifesaver. I shipped my first production app and got a 40% salary bump. Worth every penny."</p>
-        <div class="flex items-center gap-3 mt-5 pt-5 border-t border-white border-opacity-5">
-          <img src="https://api.dicebear.com/8.x/avataaars/svg?seed=user3&backgroundColor=c0aede" class="w-10 h-10 rounded-full" alt=""/>
-          <div>
-            <div class="text-sm font-semibold text-white">Carlos Medina</div>
-            <div class="text-xs text-slate-500">Frontend Dev · São Paulo</div>
-          </div>
-        </div>
-      </div>
-
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">👨‍🏫</div><div class="why-title">Industry Experts</div><div class="why-desc">Learn from practitioners with 10+ years of real industry experience at top companies</div></div>
+      <div class="why-card reveal"><div class="why-icon">🔧</div><div class="why-title">Project-Based Learning</div><div class="why-desc">Build a job-ready portfolio with 50+ real-world projects and case studies</div></div>
+      <div class="why-card reveal"><div class="why-icon">🏆</div><div class="why-title">Industry Certifications</div><div class="why-desc">Earn certificates recognized by Google, Microsoft, Amazon, and 100+ companies</div></div>
+      <div class="why-card reveal"><div class="why-icon">💼</div><div class="why-title">Internship Opportunities</div><div class="why-desc">Access 500+ paid internship opportunities with our company partners</div></div>
+      <div class="why-card reveal"><div class="why-icon">🎯</div><div class="why-title">Career Support</div><div class="why-desc">Dedicated career coaches, mock interviews, and resume review services</div></div>
+      <div class="why-card reveal"><div class="why-icon">🤝</div><div class="why-title">Placement Assistance</div><div class="why-desc">92% placement rate with average salary of ₹8.5 LPA for our graduates</div></div>
+      <div class="why-card reveal"><div class="why-icon">♾️</div><div class="why-title">Lifetime Access</div><div class="why-desc">One-time purchase, lifetime access to course content and future updates</div></div>
+      <div class="why-card reveal"><div class="why-icon">👥</div><div class="why-title">Community Learning</div><div class="why-desc">Join a community of 200,000+ learners, mentors, and industry professionals</div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ PRICING ═══════════════════════════════ -->
-<section id="pricing" class="py-24 surface-section">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-10 reveal">
-      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-azure-300 border border-azure-500 border-opacity-30">
-        <span>💎</span> Simple Pricing
-      </div>
-      <h2 class="font-display text-4xl sm:text-5xl font-800 tracking-tight" style="font-weight:800">
-        Invest in <span class="grad-text">yourself</span>
-      </h2>
-      <p class="mt-4 text-slate-400">Cancel anytime. No hidden fees.</p>
-
-      <!-- Toggle -->
-      <div class="flex items-center justify-center gap-3 mt-8">
-        <span class="text-sm" :class="!annual ? 'text-white' : 'text-slate-400'">Monthly</span>
-        <button @click="annual = !annual" class="relative w-14 h-7 rounded-full glass border border-indigo-500 border-opacity-40 flex items-center transition-colors" :style="annual ? 'background:linear-gradient(135deg,#2563eb,#7c3aed)' : ''">
-          <span class="toggle-pill w-5 h-5 rounded-full bg-white shadow-sm absolute" :class="annual ? 'translate-x-8' : 'translate-x-1'"></span>
-        </button>
-        <span class="text-sm" :class="annual ? 'text-white' : 'text-slate-400'">Annual <span class="text-emerald-400 text-xs font-semibold ml-1">Save 40%</span></span>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">💬 Success Stories</div>
+      <h2 class="section-title">Students Who <span>Transformed</span> Their Careers</h2>
+      <p class="section-sub">Real stories from real learners who landed their dream jobs</p>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonials-slide" id="testiSlide">
+        <div class="testimonial-card"><div class="test-quote">"</div><div class="test-text">Baoiams completely changed my career trajectory. I went from a non-tech background to landing a Data Scientist role at a top MNC. The structured path and mentor support were incredible.</div><div class="test-footer"><div class="test-avatar">RK</div><div><div class="test-name">Rohit Kumar</div><div class="test-role">Data Scientist @ Deloitte</div><div class="test-salary">Salary: ₹14 LPA → ₹22 LPA</div><div class="test-rating">★★★★★</div></div></div></div>
+        <div class="testimonial-card"><div class="test-quote">"</div><div class="test-text">The AI & ML bootcamp was absolutely world-class. The projects, live classes, and community helped me crack interviews at 3 MNCs simultaneously. Best investment I ever made!</div><div class="test-footer"><div class="test-avatar">PA</div><div><div class="test-name">Priya Agarwal</div><div class="test-role">ML Engineer @ Amazon</div><div class="test-salary">Salary hike: 340%</div><div class="test-rating">★★★★★</div></div></div></div>
+        <div class="testimonial-card"><div class="test-quote">"</div><div class="test-text">I was stuck in a dead-end job for 3 years. After completing the Full Stack path on Baoiams, I got 5 interview calls in one week. Now I'm a Senior Developer at a startup!</div><div class="test-footer"><div class="test-avatar">AS</div><div><div class="test-name">Arjun Singh</div><div class="test-role">Senior Dev @ TechCorp</div><div class="test-salary">₹4.5 LPA → ₹16 LPA</div><div class="test-rating">★★★★★</div></div></div></div>
+        <div class="testimonial-card"><div class="test-quote">"</div><div class="test-text">Got my first internship through the Baoiams portal and was converted to full-time after 3 months. The certificate carried a lot of weight in my interviews. Highly recommend!</div><div class="test-footer"><div class="test-avatar">NR</div><div><div class="test-name">Nandini Rao</div><div class="test-role">Cloud Engineer @ Microsoft</div><div class="test-salary">Fresher → ₹12 LPA</div><div class="test-rating">★★★★★</div></div></div></div>
+        <div class="testimonial-card"><div class="test-quote">"</div><div class="test-text">The Cybersecurity course is among the best I've seen anywhere — better than Udemy or Coursera for this domain. Real lab environments, real tools, real skills. Loved it!</div><div class="test-footer"><div class="test-avatar">KM</div><div><div class="test-name">Karan Mehta</div><div class="test-role">Security Analyst @ Wipro</div><div class="test-salary">Certified in CEH & OSCP</div><div class="test-rating">★★★★★</div></div></div></div>
       </div>
     </div>
-
-    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto reveal">
-
-      <!-- Free -->
-      <div class="glass surface-card rounded-3xl p-7 card-hover">
-        <div class="text-sm font-semibold text-slate-400 mb-2">Free</div>
-        <div class="font-display text-5xl font-800 text-white" style="font-weight:800">$0</div>
-        <p class="text-xs text-slate-500 mt-1">forever</p>
-        <div class="mt-6 space-y-3">
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>5 free courses</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Community access</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-500"><svg class="w-4 h-4 text-slate-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>Certificates</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-500"><svg class="w-4 h-4 text-slate-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>AI learning paths</div>
-        </div>
-        <a href="#" class="mt-7 block w-full glass text-center py-3 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-all">Get Started</a>
+    <div class="testi-controls">
+      <button class="testi-btn" onclick="slideTest(-1)">←</button>
+      <div class="testi-dots">
+        <div class="testi-dot active"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
       </div>
-
-      <!-- Pro (featured) -->
-      <div class="relative btn-grad rounded-3xl p-7 card-hover" style="box-shadow:0 20px 60px rgba(99,102,241,0.35)">
-        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-indigo-700 text-xs font-700 px-4 py-1 rounded-full shadow-lg" style="font-weight:700">Most Popular</div>
-        <div class="text-sm font-semibold text-indigo-200 mb-2">Pro</div>
-        <div class="font-display text-5xl font-800 text-white" style="font-weight:800">
-          <span x-text="annual ? '$19' : '$32'"></span>
-        </div>
-        <p class="text-xs text-indigo-200 mt-1" x-text="annual ? '/mo · billed annually' : '/month'"></p>
-        <div class="mt-6 space-y-3">
-          <div class="flex items-center gap-2.5 text-sm text-indigo-100"><svg class="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>All 1,400+ courses</div>
-          <div class="flex items-center gap-2.5 text-sm text-indigo-100"><svg class="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Verified certificates</div>
-          <div class="flex items-center gap-2.5 text-sm text-indigo-100"><svg class="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>AI learning paths</div>
-          <div class="flex items-center gap-2.5 text-sm text-indigo-100"><svg class="w-4 h-4 text-white flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Offline downloads</div>
-        </div>
-        <a href="#" class="mt-7 block w-full bg-white text-indigo-700 text-center py-3 rounded-xl text-sm font-700 hover:bg-opacity-90 transition-all" style="font-weight:700">Start Pro</a>
-      </div>
-
-      <!-- Team -->
-      <div class="glass surface-card rounded-3xl p-7 card-hover">
-        <div class="text-sm font-semibold text-slate-400 mb-2">Team</div>
-        <div class="font-display text-5xl font-800 text-white" style="font-weight:800">
-          <span x-text="annual ? '$12' : '$20'"></span>
-        </div>
-        <p class="text-xs text-slate-500 mt-1">/seat/mo · min 5 seats</p>
-        <div class="mt-6 space-y-3">
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Everything in Pro</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Admin dashboard</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Progress tracking</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>SSO & SCIM</div>
-        </div>
-        <a href="#" class="mt-7 block w-full glass text-center py-3 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-all">Contact Sales</a>
-      </div>
-
+      <button class="testi-btn" onclick="slideTest(1)">→</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
-<section id="faq" class="py-24" x-data="{open:null}">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14 reveal">
-      <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-6 text-xs font-medium text-yellow-300 border border-yellow-500 border-opacity-30">
-        <span>❓</span> FAQ
-      </div>
-      <h2 class="font-display text-4xl sm:text-5xl font-800 tracking-tight" style="font-weight:800">
-        Got <span class="grad-text">questions?</span>
-      </h2>
+<!-- COMMUNITY -->
+<section class="community" id="community">
+  <div class="section-inner community-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">👥 Community</div>
+      <h2 class="section-title">Join India's Largest <span>Tech Learning</span> Community</h2>
+      <p class="section-sub">Connect with mentors, peers, and industry professionals who share your passion for technology</p>
     </div>
-
-    <div class="space-y-3 reveal">
-
-      <template x-for="(faq, i) in [
-        {q: 'Do I get lifetime access to courses?', a: 'Yes — once you purchase or subscribe, the course is yours forever. Download videos, save resources, and revisit at any time with no expiry.'},
-        {q: 'Are the certificates recognized by employers?', a: 'Our certificates are recognized by thousands of companies globally, including Fortune 500s. Each certificate is blockchain-verified and shareable directly to LinkedIn.'},
-        {q: 'Can I learn at my own pace?', a: 'Absolutely. Every course is self-paced with no deadlines. Watch on your lunch break, on weekends, or in the middle of the night — it all works.'},
-        {q: 'Is there a free trial available?', a: 'Yes! Our Free plan gives you access to 5 curated starter courses with no credit card required. Upgrade whenever you\'re ready.'},
-        {q: 'What payment methods do you accept?', a: 'We accept all major credit/debit cards, PayPal, UPI, and bank transfers for team plans. All payments are secured with 256-bit SSL.'},
-        {q: 'How do I cancel my subscription?', a: 'Cancel from your account settings in under 30 seconds — no hoops, no calls. You keep access until the end of your billing period.'}
-      ]" :key="i">
-        <div class="glass surface-card rounded-2xl overflow-hidden" :class="open===i ? 'border-indigo-500 border-opacity-30' : ''">
-          <button @click="open = open===i ? null : i" class="w-full flex items-center justify-between p-5 text-left">
-            <span class="font-display font-600 text-sm text-white" style="font-weight:600" x-text="faq.q"></span>
-            <svg class="w-4 h-4 text-slate-400 flex-shrink-0 ml-4 transition-transform duration-300" :class="open===i ? 'rotate-45' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-          </button>
-          <div x-show="open===i" x-transition:enter="transition duration-300 ease-out" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="px-5 pb-5">
-            <p class="text-sm text-slate-400 leading-relaxed" x-text="faq.a"></p>
-          </div>
-        </div>
-      </template>
-
+    <div class="community-stats reveal">
+      <div class="community-stat"><div class="cs-num">200K+</div><div class="cs-label">Active Members</div></div>
+      <div class="community-stat"><div class="cs-num">500+</div><div class="cs-label">Industry Mentors</div></div>
+      <div class="community-stat"><div class="cs-num">200+</div><div class="cs-label">Study Groups</div></div>
+      <div class="community-stat"><div class="cs-num">50K+</div><div class="cs-label">Daily Discussions</div></div>
     </div>
+    <div class="community-features reveal">
+      <div class="comm-feat"><span class="comm-feat-icon">💬</span> Discussion Forums</div>
+      <div class="comm-feat"><span class="comm-feat-icon">👨‍💻</span> Mentor Network</div>
+      <div class="comm-feat"><span class="comm-feat-icon">📚</span> Study Groups</div>
+      <div class="comm-feat"><span class="comm-feat-icon">🎮</span> Coding Challenges</div>
+      <div class="comm-feat"><span class="comm-feat-icon">🗣️</span> Mock Interviews</div>
+      <div class="comm-feat"><span class="comm-feat-icon">🌍</span> Global Network</div>
+    </div>
+    <div class="reveal"><button class="btn-community" onclick="openModal('signup')">🚀 Join the Community — It's Free</button></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ CTA BANNER ═══════════════════════════════ -->
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="btn-grad rounded-3xl p-10 sm:p-14 text-center relative overflow-hidden reveal" style="box-shadow:0 30px 80px rgba(99,102,241,0.3)">
-      <!-- Background effects -->
-      <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10 blur-3xl" style="background:white"></div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10 blur-2xl" style="background:white"></div>
-      <div class="relative z-10">
-        <h2 class="font-display text-4xl sm:text-5xl font-800 text-white tracking-tight" style="font-weight:800">Ready to start learning?</h2>
-        <p class="mt-4 text-indigo-200 text-lg max-w-xl mx-auto">Join 200,000+ learners and transform your career today.</p>
-        <div class="flex flex-wrap justify-center gap-4 mt-8">
-          <a href="#" class="bg-white text-indigo-700 font-700 px-8 py-3.5 rounded-2xl text-sm hover:bg-opacity-90 transition-all shadow-lg" style="font-weight:700">Get Started Free</a>
-          <a href="#courses" class="border border-white border-opacity-40 text-white font-semibold px-8 py-3.5 rounded-2xl text-sm hover:bg-white hover:bg-opacity-10 transition-all">Browse Courses</a>
+<!-- PLACEMENT -->
+<section class="placement" id="placement">
+  <div class="section-inner">
+    <div class="placement-content">
+      <div class="reveal">
+        <div class="section-badge" style="display:inline-flex">🎯 Placement</div>
+        <h2 class="section-title" style="text-align:left">Our Students Get <span>Hired</span></h2>
+        <p class="section-sub" style="text-align:left;margin:0 0 32px">Backed by an extensive hiring partner network and dedicated placement team</p>
+        <div class="placement-stats">
+          <div class="ps-card"><div class="ps-num">92%</div><div class="ps-label">Placement Rate</div></div>
+          <div class="ps-card"><div class="ps-num">₹8.5L</div><div class="ps-label">Avg. Package</div></div>
+          <div class="ps-card"><div class="ps-num">100+</div><div class="ps-label">Hiring Partners</div></div>
+          <div class="ps-card"><div class="ps-num">340%</div><div class="ps-label">Avg. Salary Hike</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div style="margin-bottom:20px;font-weight:700;font-size:1rem">Our Hiring Partners</div>
+        <div class="partners-logos">
+          <div class="partner-logo">🔵 Google</div>
+          <div class="partner-logo">🟦 Microsoft</div>
+          <div class="partner-logo">🟠 Amazon</div>
+          <div class="partner-logo">🔷 IBM</div>
+          <div class="partner-logo">🟢 Infosys</div>
+          <div class="partner-logo">🔵 TCS</div>
+          <div class="partner-logo">🟣 Wipro</div>
+          <div class="partner-logo">🟤 Accenture</div>
+          <div class="partner-logo">🔴 Oracle</div>
+          <div class="partner-logo">🟢 Freshworks</div>
+          <div class="partner-logo">🔵 Deloitte</div>
+          <div class="partner-logo">🟠 Swiggy</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
-<footer class="footer-bg pt-16 pb-8" style="background:#0a0d18">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 pb-12 border-b border-white border-opacity-5">
-      <!-- Brand -->
-      <div class="col-span-2 md:col-span-1">
-        <div class="flex items-center gap-2.5 mb-4">
-          <div class="w-8 h-8 rounded-lg btn-grad flex items-center justify-center">
-            <svg class="w-4 h-4 text-white relative z-10" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.357l4-2a1 1 0 11.895 1.789L8 8.697V12a1 1 0 01-1 1H5a1 1 0 01-1-1v-1.268l-1.394.597A1 1 0 011 10.5V8a1 1 0 01.553-.894l8-3.5a1 1 0 01.841 0l8 3.5A1 1 0 0119 8v2.5z"/></svg>
-          </div>
-          <span class="font-display font-800 text-xl grad-text" style="font-weight:800">Learnify</span>
-        </div>
-        <p class="text-sm text-slate-500 leading-relaxed mb-5">Empowering learners worldwide with expert-led online education.</p>
-        <!-- Social -->
-        <div class="flex gap-3">
-          <a href="#" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724 9.864 9.864 0 01-3.127 1.195 4.916 4.916 0 00-8.384 4.482A13.95 13.95 0 011.64 3.161a4.916 4.916 0 001.523 6.556 4.897 4.897 0 01-2.228-.616v.062a4.917 4.917 0 003.946 4.819 4.932 4.932 0 01-2.224.084 4.918 4.918 0 004.592 3.413A9.867 9.867 0 010 19.54a13.94 13.94 0 007.548 2.212c9.057 0 14.01-7.503 14.01-14.01 0-.213-.004-.426-.015-.637A10.012 10.012 0 0024 4.557z"/></svg>
-          </a>
-          <a href="#" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="#" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="#" class="w-8 h-8 glass rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">📰 Resources</div>
+      <h2 class="section-title">Latest <span>Articles & Guides</span></h2>
+      <p class="section-sub">Stay updated with tech trends, career guides, and interview prep resources</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#0d1b2a,#1b2838)">🤖<span class="blog-cat-badge bc-tech">Tech News</span></div><div class="blog-body"><div class="blog-title">Top 10 AI Skills Every Developer Must Learn in 2025</div><div class="blog-meta"><div class="blog-date">📅 May 28, 2025</div><div class="blog-read-time">⏱ 8 min read</div></div></div></div>
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#0a1a00,#1a3300)">💼<span class="blog-cat-badge bc-career">Career Guide</span></div><div class="blog-body"><div class="blog-title">How to Switch Careers to Data Science with No Background</div><div class="blog-meta"><div class="blog-date">📅 May 22, 2025</div><div class="blog-read-time">⏱ 12 min read</div></div></div></div>
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#1a0a00,#330f00)">💻<span class="blog-cat-badge bc-tutorial">Tutorial</span></div><div class="blog-body"><div class="blog-title">Build Your First LLM Application with LangChain & Python</div><div class="blog-meta"><div class="blog-date">📅 May 18, 2025</div><div class="blog-read-time">⏱ 15 min read</div></div></div></div>
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#0a0020,#1a0040)">🔒<span class="blog-cat-badge bc-tech">Tech News</span></div><div class="blog-body"><div class="blog-title">Cybersecurity Salary Guide India 2025: What to Expect</div><div class="blog-meta"><div class="blog-date">📅 May 14, 2025</div><div class="blog-read-time">⏱ 10 min read</div></div></div></div>
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#001a1a,#003333)">☁️<span class="blog-cat-badge bc-career">Career Guide</span></div><div class="blog-body"><div class="blog-title">AWS vs Azure vs GCP: Which Cloud Certification to Get First?</div><div class="blog-meta"><div class="blog-date">📅 May 10, 2025</div><div class="blog-read-time">⏱ 9 min read</div></div></div></div>
+      <div class="blog-card reveal"><div class="blog-thumb" style="background:linear-gradient(135deg,#1a1a00,#333300)">🎨<span class="blog-cat-badge bc-tutorial">Tutorial</span></div><div class="blog-body"><div class="blog-title">Complete DSA Interview Preparation Guide for FAANG 2025</div><div class="blog-meta"><div class="blog-date">📅 May 5, 2025</div><div class="blog-read-time">⏱ 20 min read</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-badge">❓ FAQ</div>
+      <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What makes Baoiams different from Coursera or Udemy?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>Baoiams is India-focused with vernacular support, real-world project-based learning, a dedicated internship portal, and a 92% placement rate. We offer end-to-end career support — from learning to landing the job — which most platforms don't provide.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Are the certificates recognized by companies?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>Yes! Baoiams certificates are blockchain-verified and recognized by 100+ companies including Google, Microsoft, Infosys, TCS, Wipro, and more. They include a unique verification link that employers can verify instantly.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Do I need prior experience to enroll in courses?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>No prior experience is required for most beginner-level courses. Each course clearly lists prerequisites. We have paths designed for complete beginners, intermediate learners, and experienced professionals looking to upskill.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What is the refund policy?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>We offer a 7-day full refund policy on all course purchases. If you're not satisfied within the first 7 days, contact our support team for a complete, no-questions-asked refund.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I access courses on mobile?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>Absolutely! Baoiams is fully optimized for mobile devices. Our platform works seamlessly on smartphones and tablets. You can also download course content for offline learning on our mobile app.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How does the internship portal work?</span><div class="faq-icon">+</div></div><div class="faq-a"><p>Once enrolled in a course or learning path, you get access to the internship portal. You can apply directly to partner companies, track your application status, and even get interview prep support from our career team.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <h2>Start Your Learning Journey Today</h2>
+    <p>Join 200,000+ learners who are transforming their careers with Baoiams. Your first step starts here — and it's free to begin.</p>
+    <div class="cta-btns">
+      <button class="btn-cta-white" onclick="openModal('signup')">🚀 Explore Courses</button>
+      <a href="#community" class="btn-cta-outline">👥 Join Community</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">Baoiams</span>
+        <p class="footer-desc">Learn. Build. Innovate. Your one-stop destination for in-demand tech skills, real-world projects, certifications, internships, and career placement support.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" title="LinkedIn">in</a>
+          <a class="social-btn" href="#" title="Twitter">𝕏</a>
+          <a class="social-btn" href="#" title="YouTube">▶</a>
+          <a class="social-btn" href="#" title="Instagram">📷</a>
+          <a class="social-btn" href="#" title="Telegram">✈️</a>
         </div>
       </div>
-
-      <!-- Links -->
-      <div>
-        <h5 class="font-display font-600 text-sm text-white mb-4" style="font-weight:600">Platform</h5>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Browse Courses</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Learning Paths</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Certificates</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">For Teams</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Mobile App</a></li>
+      <div class="footer-col">
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="#">Data Science</a></li>
+          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Cybersecurity</a></li>
+          <li><a href="#">Cloud Computing</a></li>
+          <li><a href="#">DevOps</a></li>
         </ul>
       </div>
-      <div>
-        <h5 class="font-display font-600 text-sm text-white mb-4" style="font-weight:600">Company</h5>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">About Us</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Careers</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Blog</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Press</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Contact</a></li>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </div>
-      <div>
-        <h5 class="font-display font-600 text-sm text-white mb-4" style="font-weight:600">Legal</h5>
-        <ul class="space-y-2.5">
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Terms of Service</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Cookie Policy</a></li>
-          <li><a href="#" class="text-sm text-slate-500 hover:text-slate-300 transition-colors">Refund Policy</a></li>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Learning Tips</a></li>
+          <li><a href="#">Scholarships</a></li>
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Sitemap</a></li>
         </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get latest courses, offers, and tech news delivered to your inbox.</p>
+        <div class="newsletter-form">
+          <input class="newsletter-input" type="email" placeholder="Your email address">
+          <button class="btn-subscribe">→</button>
+        </div>
+        <div style="margin-top:16px;font-size:0.78rem;color:var(--text3)">📍 Lucknow, India<br>📧 hello@baoiams.com<br>📞 +91 9876543210</div>
       </div>
     </div>
-
-    <div class="flex flex-col sm:flex-row items-center justify-between pt-8 gap-4">
-      <p class="text-xs text-slate-600">© 2025 Learnify Technologies, Inc. All rights reserved.</p>
-      <div class="flex items-center gap-4">
-        <span class="text-xs text-slate-600">🌍 English</span>
-        <span class="text-xs text-slate-600">Made with ❤️ for curious minds</span>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Baoiams. All rights reserved. | Be One In A Million</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Refund Policy</a>
       </div>
     </div>
   </div>
 </footer>
 
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-  // Smooth active nav highlight
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    sections.forEach(section => {
-      const top = section.offsetTop - 80;
-      const bottom = top + section.offsetHeight;
-      if (scrollY >= top && scrollY < bottom) {
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-white'));
-        const link = document.querySelector(`.nav-link[href="#${section.id}"]`);
-        if (link) link.classList.add('text-white');
-      }
-    });
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">✕</button>
+    <h2>Welcome Back! 👋</h2>
+    <p>Login to continue your learning journey</p>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="you@example.com"></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="Enter your password"></div>
+    <div style="text-align:right;margin:-8px 0 8px"><a style="font-size:0.8rem;color:var(--orange);cursor:pointer">Forgot password?</a></div>
+    <button class="btn-form">Login to Baoiams</button>
+    <div class="or-divider">OR</div>
+    <div class="social-login">
+      <button class="btn-social">🔵 Google</button>
+      <button class="btn-social">🟦 Microsoft</button>
+    </div>
+    <div class="modal-switch">Don't have an account? <a onclick="openModal('signup')">Sign up free</a></div>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signup')">✕</button>
+    <h2>Join Baoiams 🚀</h2>
+    <p>Start your free learning journey today</p>
+    <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Rahul Sharma"></div>
+    <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="you@example.com"></div>
+    <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="Min. 8 characters"></div>
+    <button class="btn-form">Create Free Account</button>
+    <div class="or-divider">OR</div>
+    <div class="social-login">
+      <button class="btn-social">🔵 Google</button>
+      <button class="btn-social">🟦 LinkedIn</button>
+    </div>
+    <div class="modal-switch">Already have an account? <a onclick="openModal('login')">Login</a></div>
+    <p style="font-size:0.72rem;color:var(--text3);text-align:center;margin-top:12px">By signing up, you agree to our <a style="color:var(--orange)">Terms</a> & <a style="color:var(--orange)">Privacy Policy</a></p>
+  </div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <div class="search-input-wrap">
+      <span class="si-icon">🔍</span>
+      <input class="search-input" id="searchInput" placeholder="Search courses, paths, topics...">
+      <span class="search-close" onclick="closeSearch()">ESC</span>
+    </div>
+    <div class="search-suggestions">
+      <div class="search-tag">Popular Searches</div>
+      <div class="suggestion-chips">
+        <div class="suggestion-chip" onclick="openModal('signup')">Machine Learning</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">Python</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">Full Stack</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">AWS Certification</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">Data Science</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">React.js</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">DevOps</div>
+        <div class="suggestion-chip" onclick="openModal('signup')">Ethical Hacking</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// THEME TOGGLE
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+let isDark = localStorage.getItem('baoiams-theme') === 'dark';
+function applyTheme() {
+  html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  themeToggle.textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('baoiams-theme', isDark ? 'dark' : 'light');
+}
+applyTheme();
+themeToggle.addEventListener('click', () => { isDark = !isDark; applyTheme(); });
+
+// MOBILE MENU
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// MODALS
+function openModal(type) {
+  if (type === 'login') {
+    closeModal('signup');
+    document.getElementById('loginModal').classList.add('open');
+  } else {
+    closeModal('login');
+    document.getElementById('signupModal').classList.add('open');
+  }
+}
+function closeModal(type) {
+  document.getElementById(type === 'login' ? 'loginModal' : 'signupModal').classList.remove('open');
+}
+document.getElementById('loginModal').addEventListener('click', function(e) { if(e.target===this)closeModal('login'); });
+document.getElementById('signupModal').addEventListener('click', function(e) { if(e.target===this)closeModal('signup'); });
+
+// SEARCH
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('searchInput').focus(), 100);
+}
+function closeSearch(e) {
+  if (!e || e.target === document.getElementById('searchOverlay')) {
+    document.getElementById('searchOverlay').classList.remove('open');
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeSearch();
+    closeModal('login');
+    closeModal('signup');
+  }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+});
+
+// COUNTER ANIMATION
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const duration = 2000;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    if (target >= 1000) {
+      el.textContent = (current >= 1000 ? (current/1000).toFixed(0) + 'K+' : Math.floor(current));
+    } else {
+      el.textContent = Math.floor(current) + (el.getAttribute('data-target') === '95' ? '%' : '+');
+    }
+    if (current >= target) clearInterval(timer);
+  }, 16);
+}
+let countersStarted = false;
+function checkCounters() {
+  if (countersStarted) return;
+  const hero = document.querySelector('.hero-stats');
+  if (!hero) return;
+  const rect = hero.getBoundingClientRect();
+  if (rect.top < window.innerHeight) {
+    countersStarted = true;
+    document.querySelectorAll('[data-target]').forEach(el => animateCounter(el));
+  }
+}
+
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// BACK TO TOP
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  document.getElementById('backTop').classList.toggle('show', s > 400);
+  checkCounters();
+});
+
+// FAQ
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// TESTIMONIALS SLIDER
+let testiPos = 0;
+const testiSlide = document.getElementById('testiSlide');
+function getCardWidth() {
+  const card = testiSlide.querySelector('.testimonial-card');
+  return card ? card.offsetWidth + 24 : 344;
+}
+function getMaxSlide() {
+  const visible = Math.floor(testiSlide.parentElement.offsetWidth / getCardWidth());
+  return Math.max(0, testiSlide.children.length - visible);
+}
+function slideTest(dir) {
+  const max = getMaxSlide();
+  testiPos = Math.max(0, Math.min(testiPos + dir, max));
+  testiSlide.style.transform = `translateX(-${testiPos * getCardWidth()}px)`;
+  document.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === Math.min(testiPos, document.querySelectorAll('.testi-dot').length - 1));
   });
+}
+document.querySelectorAll('.testi-dot').forEach((d, i) => {
+  d.addEventListener('click', () => { testiPos = i; slideTest(0); });
+});
+
+// LIVE COUNTDOWN
+function updateCountdown() {
+  const now = new Date();
+  const target = new Date(now.getTime() + 2*3600000 + 45*60000 + 30000 - (now.getTime() % 1000));
+  let secs = Math.floor((new Date(now.getTime() + 2*3600000 + 44*60000 + 30000 - (Date.now() % 60000)) - now) / 1000);
+  if (secs < 0) secs = 0;
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  const hEl = document.getElementById('h1');
+  const mEl = document.getElementById('m1');
+  const sEl = document.getElementById('s1');
+  if (hEl) hEl.textContent = String(h).padStart(2,'0');
+  if (mEl) mEl.textContent = String(m).padStart(2,'0');
+  if (sEl) sEl.textContent = String(s).padStart(2,'0');
+}
+// Simple countdown from 2h45m
+let totalSecs = 2*3600 + 45*60 + 30;
+setInterval(() => {
+  if (totalSecs > 0) totalSecs--;
+  const h = Math.floor(totalSecs/3600);
+  const m = Math.floor((totalSecs%3600)/60);
+  const s = totalSecs%60;
+  const hEl = document.getElementById('h1');
+  const mEl = document.getElementById('m1');
+  const sEl = document.getElementById('s1');
+  if(hEl) hEl.textContent = String(h).padStart(2,'0');
+  if(mEl) mEl.textContent = String(m).padStart(2,'0');
+  if(sEl) sEl.textContent = String(s).padStart(2,'0');
+}, 1000);
+
+// PROGRESS BARS ANIMATION
+const progressObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.progress-fill').forEach(bar => {
+        bar.style.width = bar.style.width || '0%';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.dashboard-card').forEach(c => progressObserver.observe(c));
+
+// WISHLIST TOGGLE
+document.querySelectorAll('.wishlist-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    btn.textContent = btn.textContent === '♡' ? '♥' : '♡';
+    btn.style.color = btn.textContent === '♥' ? '#FF6B00' : '#fff';
+  });
+});
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow = window.scrollY > 50 ? '0 4px 24px rgba(0,0,0,0.1)' : 'none';
+});
+
+// Initial reveal check
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if(r.top < window.innerHeight) el.classList.add('visible');
+  });
+}, 100);
 </script>
 </body>
 </html>
